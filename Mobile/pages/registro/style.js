@@ -22,16 +22,16 @@ export default StyleSheet.create({
         height:'40%', 
         marginLeft: '2%',
     },
-    loginText:{
+    registrarText:{
         alignSelf:'center',
         color:'red',
-        fontSize:'100px',
+        fontSize:'60px',
         textShadowColor: 'rgba(0, 0, 0, 0.25)',
         textShadowOffset: {width: 3, height: 3},
         textShadowRadius: 3, 
     },
     inputsBox:{
-        height:'25%',
+        height:'50%',
         justifyContent:'space-around',
     },
     inputs:{
@@ -43,7 +43,7 @@ export default StyleSheet.create({
         fontSize:'30px',
         border:'2px solid #E7E7E7'
     },
-    loginButton:{
+    registrarButton:{
         fontSize:'40px',
         alignSelf:'center',
         color:'white',
