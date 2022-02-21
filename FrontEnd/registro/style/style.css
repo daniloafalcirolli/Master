@@ -1,0 +1,19 @@
+.mid{
+    padding-bottom: 7vh;
+    background-color: #E7E7E7;
+    margin-top: 50px;
+}
+
+.img{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.img div{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 30px;
+    border-radius: 15px;
+}

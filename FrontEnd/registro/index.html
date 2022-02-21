@@ -18,18 +18,24 @@
         <h1>Registro</h1>
     </div>
 
-    <div class="form">
-        <form method="post">
-            <input type="text" placeholder="Nome Completo" id="reg_senha" required>
-            <input type="email" placeholder="E-mail" id="reg_email" required>
-            <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
-            <input type="text" placeholder="Senha" id="reg_tel" required>
-            <input type="password" placeholder="Senha" id="reg_senha" onkeyup="setPw(this)">
-        </form>
-    </div>
-
-    <div class="div_btn">
-        <button type="submit" id="btn" onclick="registro()">Registrar</button>
+    <div class="mid">
+        <div class="img">
+            <div></div>
+        </div>
+        
+        <div class="form">
+            <form method="post">
+                <input type="text" placeholder="Nome Completo" id="reg_senha" required>
+                <input type="email" placeholder="E-mail" id="reg_email" required>
+                <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
+                <input type="text" placeholder="Senha" id="reg_tel" required>
+                <input type="password" placeholder="Senha" id="reg_senha" onkeyup="setPw(this)">
+            </form>
+        </div>
+    
+        <div class="div_btn">
+            <button type="submit" id="btn" onclick="registro()">Registrar</button>
+        </div>
     </div>
     
 </body>
