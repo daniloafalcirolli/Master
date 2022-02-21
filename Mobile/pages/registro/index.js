@@ -1,23 +1,32 @@
 import React from "react";
-import Styles from './style';
-import GStyles from '../global/Styles/style'
+import Styles from "./style";
+import GStyles from "../global/Styles/style"
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
-import {useFonts,Montserrat_400Regular,Montserrat_500Medium} from '@expo-google-fonts/montserrat';
+import {useFonts,Montserrat_400Regular,Montserrat_500Medium} from "@expo-google-fonts/montserrat";
+import {launchImageLibrary} from "react-native-image-picker";
 import style from "./style";
 
 
 export default function Registro({navigation}){
     const [fontsLoaded] = useFonts({Montserrat_500Medium, Montserrat_400Regular}); 
-    
+    const oi
     return(
         <View style={Styles.page}>
             <View style={GStyles.header}>
-                <Image style={GStyles.logo} source={require('../global/assets/logo.png')}></Image>
+                <Image style={GStyles.logo} source={require("../global/assets/logo.png")}></Image>
             </View>
             <View style={Styles.main}>
                 <Text style={Styles.registrarText}>Registrar</Text>
                 <ScrollView style={Styles.scroll}>
-                    <Image source={require('../global/assets/userimage.jpg')} style={Styles.image}></Image>
+                    <View style={Styles.imageBox}>
+                        <TouchableOpacity onPress={async () => {
+                            const options = {};
+                            const result = await launchImageLibrary(options);
+                        }}>
+                            <Image source={require('../global/assets/cam.jpg')} style={Styles.addImage}></Image>
+                        </TouchableOpacity>
+                        <Image source={require('../global/assets/userimage.jpg')} style={Styles.image}></Image>
+                    </View>
                     <View style={Styles.back}>
                         <View style={Styles.inputsBox}>
                             <TextInput placeholder={"Nome"} style={GStyles.input}></TextInput>
