@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <img src="../global/img/senai.svg" class="logo">
+        <img src="../global/img/logo.png" class="logo">
     </header>
 
     <div class="txt">
@@ -19,18 +19,25 @@
     </div>
 
     <div class="mid">
-        <div class="img">
-            <div></div>
-        </div>
         
         <div class="form">
             <form method="post">
-                <input type="text" placeholder="Nome Completo" id="reg_senha" required>
-                <input type="email" placeholder="E-mail" id="reg_email" required>
-                <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
-                <input type="text" placeholder="Senha" id="reg_tel" required>
-                <input type="password" placeholder="Senha" id="reg_senha" onkeyup="setPw(this)">
+                <div>
+                    <input type="text" placeholder="Nome Completo" id="reg_senha" required>
+                    <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
+                    <input type="email" placeholder="E-mail" id="reg_email" required>
+                </div>
+                <div>
+                    <input type="text" placeholder="Telefone" id="reg_tel" required>
+                    <input type="text" placeholder="Senha" id="reg_tel" required>
+                    <input type="password" placeholder="Senha" id="reg_senha" onkeyup="setPw(this)">
+                </div>
+                
             </form>
+        </div>
+
+        <div class="img">
+            <input type="file" id="avatar" accept="image/png, image/jpg, image/jpeg">
         </div>
     
         <div class="div_btn">

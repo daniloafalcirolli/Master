@@ -16,7 +16,7 @@ body{
 }
 
 .logo{
-    width: 50vw;
+    width: 15vw;
     margin-left: 3vw;
 }
 
@@ -37,20 +37,24 @@ header{
 
 .form{
     display: flex;
+    width: 100%;
     justify-content: center;
-    width: 100vw;;
+    padding-top: 4.5vh;
 }
 
 form{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 20vw 20vw;
+    column-gap: 2vw;
     width: 80vw;
+    justify-content: center;
 }
 
 input{
+    width: 20vw;
     font-size: 25px;
-    padding: 10px;
-    margin: 7.5px 0;
+    padding: 15px;
+    margin: 20px 0;
     border: none;
     border-bottom: 2px solid red;
     outline: none;
@@ -69,7 +73,7 @@ input:focus{
     display: flex;
     width: 100vw;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
 
 #btn{

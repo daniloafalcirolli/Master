@@ -1,19 +1,45 @@
 .mid{
-    padding-bottom: 7vh;
-    background-color: #E7E7E7;
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#avatar::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+#avatar::before {
+    content: 'Selecione a foto';
+    display: inline-block;
+    background: #fff;
+    border: 2px solid red;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    color: red;
+    font-weight: 700;
+}
+
+#avatar:hover::before {
+    transition: .4s;
+    background: red;
+    color: #fff
+
+}
+
+#avatar:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 .img{
     display: flex;
-    width: 100%;
-    justify-content: center;
+    align-items: center;
 }
 
-.img div{
-    background-color: red;
-    width: 200px;
-    height: 200px;
-    margin: -100px 0 30px;
-    border-radius: 15px;
+.img input{
+    width: 13vw;
+    border: none;
 }
