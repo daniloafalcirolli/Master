@@ -9,7 +9,7 @@ import style from "./style";
 
 export default function Registro({navigation}){
     const [fontsLoaded] = useFonts({Montserrat_500Medium, Montserrat_400Regular}); 
-    const oi
+
     return(
         <View style={Styles.page}>
             <View style={GStyles.header}>
@@ -19,10 +19,7 @@ export default function Registro({navigation}){
                 <Text style={Styles.registrarText}>Registrar</Text>
                 <ScrollView style={Styles.scroll}>
                     <View style={Styles.imageBox}>
-                        <TouchableOpacity onPress={async () => {
-                            const options = {};
-                            const result = await launchImageLibrary(options);
-                        }}>
+                        <TouchableOpacity onPress={pickImage}>
                             <Image source={require('../global/assets/cam.jpg')} style={Styles.addImage}></Image>
                         </TouchableOpacity>
                         <Image source={require('../global/assets/userimage.jpg')} style={Styles.image}></Image>
