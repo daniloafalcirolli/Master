@@ -1,42 +1,59 @@
 import React from "react";
-import Styles from "./style";
-import GStyles from "../global/Styles/style"
-import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
-import {useFonts,Montserrat_400Regular,Montserrat_500Medium} from "@expo-google-fonts/montserrat";
-import {launchImageLibrary} from "react-native-image-picker";
-import style from "./style";
+import { Image, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
+import Style from "./style";
+import GStyle from "../global/style/style.js";
+import { StatusBar } from "expo-status-bar";
 
-
-export default function Registro({navigation}){
-    const [fontsLoaded] = useFonts({Montserrat_500Medium, Montserrat_400Regular}); 
+export default function Registro({navigator}){
+    
+    const color = "#F00"
+    const json = [
+        {
+            text: "CPF"
+        },
+        {
+            text: "Nome"
+        },
+        {
+            text: "Email"
+        },
+        {
+            text: "Telefone"
+        },
+        {
+            text: "Senha"
+        },
+        {
+            text: "Conf. Senha"
+        }
+    ]
 
     return(
-        <View style={Styles.page}>
-            <View style={GStyles.header}>
-                <Image style={GStyles.logo} source={require("../global/assets/logo.png")}></Image>
+        <View style={Style.page}>
+            <StatusBar hidden={true} />
+            <View style={GStyle.header}>
+                <Image style={GStyle.image} source={require('../global/assets/logo.png')}/>
             </View>
-            <View style={Styles.main}>
-                <Text style={Styles.registrarText}>Registrar</Text>
-                <ScrollView style={Styles.scroll}>
-                    <View style={Styles.imageBox}>
-                        <TouchableOpacity onPress={pickImage}>
-                            <Image source={require('../global/assets/cam.jpg')} style={Styles.addImage}></Image>
-                        </TouchableOpacity>
-                        <Image source={require('../global/assets/userimage.jpg')} style={Styles.image}></Image>
-                    </View>
-                    <View style={Styles.back}>
-                        <View style={Styles.inputsBox}>
-                            <TextInput placeholder={"Nome"} style={GStyles.input}></TextInput>
-                            <TextInput placeholder={"Email"} style={GStyles.input}></TextInput>
-                            <TextInput placeholder={"Telefone"} style={GStyles.input}></TextInput>
-                            <TextInput placeholder={"CPF"} style={GStyles.input}></TextInput>
-                            <TextInput placeholder={"Senha"} style={GStyles.input} secureTextEntry={true}></TextInput>
-                            <TextInput placeholder={"Conf. Senha "} style={GStyles.input} secureTextEntry={true}></TextInput>
-                        </View>
-                        <TouchableOpacity style={GStyles.button}>Registrar</TouchableOpacity>
-                    </View>
-                </ScrollView>
-            </View>
+            <ScrollView style={Style.scroll}>
+                <Text style={Style.regText}>Registro</Text>
+                {
+                    json.map((e,index)=>{
+                        let [getStyle, setStyle] = React.useState(GStyle.input);
+                        if(index > (e.length - 2)){
+                            return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} secureTextEntry={true} placeholder={e.text} ></TextInput>);
+                        }else{
+                            return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} ></TextInput>)
+                        }
+                    })
+                }
+                <TouchableOpacity style={Style.addPhoto}>
+                    <Text style={Style.textAddPhoto}>Escolha uma foto</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={GStyle.button}>
+                    <Text style={GStyle.textButton}>Registrar</Text>
+                </TouchableOpacity>
+            </ScrollView>
         </View>
     );
 }
+

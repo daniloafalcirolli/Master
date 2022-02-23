@@ -1,25 +1,21 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     page:{
-        backgroundColor:'white',
-        fontFamily: "Montserrat_400Regular",
-        width:'100%',
-        height:'100%',
+        height: '100%',
+        backgroundColor: "#FFF",
     },
-    main:{
-        justifyContent:'space-around',
-        height:'92%',
-    },
-    loginText:{
-        alignSelf:'center',
-        color:'red',
-        fontSize:'100px',
-        textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    loginText: {
+        textAlign: 'center',
+        fontSize:70,
+        color: "#F00",
+        textShadowColor: "rgba(0,0,0,0.2)",
         textShadowOffset: {width: 3, height: 3},
-        textShadowRadius: 3, 
+        textShadowRadius: 10,
+        marginTop: 40,
+        marginBottom: 100
     },
-    inputsBox:{
-        height:'25%',
-        justifyContent:'space-around',
+    form: {
+        alignItems: 'center',
+        marginBottom: 60
     }
 })

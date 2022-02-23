@@ -1,26 +1,26 @@
 import React from "react";
-import Styles from './style';
-import GStyles from '../global/Styles/style'
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import {useFonts,Montserrat_400Regular,Montserrat_500Medium} from '@expo-google-fonts/montserrat';
+import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+import Style from "./style";
+import GStyle from "../global/style/style.js";
+import { StatusBar } from "expo-status-bar";
 
 
 export default function Login({navigation}){
-    const [fontsLoaded] = useFonts({Montserrat_500Medium, Montserrat_400Regular}); 
-
+    
     return(
-        <View style={Styles.page}>
-            <View style={GStyles.header}>
-                <Image style={GStyles.logo} source={require('../global/assets/logo.png')}></Image>
+        <View style={Style.page}>
+            <StatusBar hidden={true} />
+            <View style={GStyle.header}>
+                <Image style={GStyle.image} source={require('../global/assets/logo.png')}/>
             </View>
-            <View style={Styles.main}>
-                <Text style={Styles.loginText}>Login</Text>
-                    <View style={Styles.inputsBox}>
-                        <TextInput placeholder={"CPF"} style={GStyles.input}></TextInput>
-                        <TextInput placeholder={"Senha"} style={GStyles.input} secureTextEntry={true}></TextInput>
-                    </View>
-                <TouchableOpacity style={GStyles.button}>Logar</TouchableOpacity>
+            <Text style={Style.loginText}>Login</Text>
+            <View style={Style.form}>
+                <TextInput placeholder="CPF" placeholderTextColor="#F00" style={GStyle.input}></TextInput>
+                <TextInput placeholder="Senha" placeholderTextColor="#F00" secureTextEntry={true} style={GStyle.input}></TextInput>
             </View>
+            <TouchableOpacity style={GStyle.button}>
+                <Text style={GStyle.textButton}>Logar</Text>
+            </TouchableOpacity>
         </View>
     );
 }

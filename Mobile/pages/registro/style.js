@@ -1,57 +1,34 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
-    page:{
-        height:"100%",
-        backgroundColor:"white",
-        fontFamily: "Montserrat_400Regular",
+    page: {
+        flex: 1,
+        backgroundColor: "#fff",
     },
-    registrarText:{
-        textAlign:"center",
-        color:"red",
-        fontSize:"60px",
-        textShadowColor: "rgba(0, 0, 0, 0.25)",
-        textShadowOffset: {width: "3px", height: "3px"},
-        textShadowRadius: "3px",
-        marginBottom:"40px"
-    },
-    main: {
-        flex:1,
+    regText: {
+        textAlign: 'center',
+        fontSize:70,
+        color: "#F00",
+        textShadowColor: "rgba(0,0,0,0.2)",
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 10,
+        marginBottom: 30
     },
     scroll:{
-        height:"200px",
+        flex: 1,
     },
-    back: {
-        backgroundColor: "#e7e7e7",
-        paddingTop: "50px",
-        paddingBottom: "20px"
+    textAddPhoto: {
+        fontSize: 30,
+        color: "#F00",
+        textAlign: "center",
     },
-    imageBox: {
-        zIndex:"100",
-        marginBottom: "-40px",
-        width:"150px",
-        alignSelf:"center",
-    },
-    image:{
-        zIndex: "-999",
-        width: "150px",
-        height: "150px",
-        border: "5px solid #e7e7e7",
-        borderRadius: "30px",
-        alignSelf:"center",
-    },
-    addImage:{
-        width:"50px",
-        height:"50px",
-        alignSelf:"end",
-        backgroundColor: "#e7e7e7",
-        borderRadius: "50%",
-        zIndex:999,
-        marginBottom: "-30px",
-        marginRight: "-15px"
-    },
-    inputsBox:{
-        height:"550px",
-        justifyContent:"space-around",
-        marginBottom: "50px"
-    },
+    addPhoto: {
+        alignSelf: 'center',
+        width: 300,
+        backgroundColor: "#FFF",
+        borderColor: "#F00",
+        borderWidth: 2,
+        fontSize:25,
+        padding: 10,
+        margin: 10
+    }
 })
