@@ -23,6 +23,7 @@ body{
 header{
     background-color: var(--p-color);
     box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.3);
+    width: 100vw;
 }
 
 .txt{
