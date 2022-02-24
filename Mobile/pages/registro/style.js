@@ -30,5 +30,17 @@ export default StyleSheet.create({
         fontSize:25,
         padding: 10,
         margin: 10
+    },
+    msg:{
+        backgroundColor: "#F00",
+        color: "#FFF",
+        padding: 10,
+        alignSelf: 'center',
+        fontSize: 20,
+        width: 300,
+        textAlign: 'center',
+    },
+    removemsg: {
+        display: "none"
     }
 })

@@ -6,6 +6,12 @@ import { StatusBar } from "expo-status-bar";
 
 export default function UserPage({navigator}){
 
+    const json = [
+        {text:"Email"},
+        {text:"Telefone"},
+        {text:"Nova Senha",type: "pass"},
+    ]
+
     return(
         <View style={Style.page}>
             <StatusBar hidden={true} />
@@ -22,9 +28,16 @@ export default function UserPage({navigator}){
                     </View>
                     <View style={Style.form}>
                         <Text style={Style.altInfoText}>Alterar Informações</Text>
-                        <TextInput placeholder="Email" placeholderTextColor="#F00" style={GStyle.input}></TextInput>
-                        <TextInput placeholder="Telefone" placeholderTextColor="#F00" style={GStyle.input}></TextInput>
-                        <TextInput placeholder="Senha" secureTextEntry={true} placeholderTextColor="#F00" style={GStyle.input}></TextInput>
+                        {
+                            json.map((e,index)=>{
+                                let [getStyle, setStyle] = React.useState(GStyle.input);
+                                if(e.type == "pass"){
+                                    return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} secureTextEntry={true} placeholder={e.text} ></TextInput>);
+                                }else{
+                                    return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} ></TextInput>)
+                                }
+                            })
+                        }
                     </View>
                     <TouchableOpacity style={Style.button}><Text style={Style.textButton}>Alterar informações</Text></TouchableOpacity>
                 </View>
