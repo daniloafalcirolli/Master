@@ -18,17 +18,40 @@
     
     <div class="meio">
         <div class="info">
-           <div class="user">
+            <div class="user">
                <img src="../global/img/avatar.png">
                <h3>Fulano de Tal</h3>
-           </div>
+            </div>
         </div>
-        <div class="filter">
+        <container>
+            <div class="fields">
+                <span>
+                    <h2>CPF</h2>
+                    <p>135.613.646/85</p>
+                </span>
+                <form method="post">
+                    <input type="email" id="user_email">
+                    <input type="text" id="user_tel">
+                </form>
+                <button type="submit" id="btn" class="btn_save" onclick="">Salvar</button>
+                <div class="bottom_btns">
+                    <button type="submit" id="btn" class="btn_exit" onclick="" style="padding: 10px 25px; margin-bottom: 20px">Sair</button>
+                    <button type="submit" id="btn" class="btn_new_user" onclick="">Registrar novo Usuario</button>
+                </div>
+            </div>
+            <div class="filter">
+                <h2>Filtros</h2>
+                <div>
+                    <span><label>Todos</label><input type="radio" name="filter"></span>
+                    <span><label>Para Amanhã</label><input type="radio" name="filter"></span>
+                    <span><label>Minhas Reservas</label><input type="radio" name="filter"></span>
+                </div>
+            </div>
+            <div class="schedule">
 
-        </div>
-        <div class="schedule">
-
-        </div>
+            </div>
+        </container>
+        
     </div>
 
 </body>
