@@ -1,6 +1,6 @@
 import React from "react";
 import Registro from '../registro/index.js'
-import UserPage from "../userPage/index.js"
+import UserPage from "../userpage/index.js"
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 

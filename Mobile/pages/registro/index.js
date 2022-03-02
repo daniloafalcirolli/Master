@@ -3,8 +3,35 @@ import { Image, Text, TextInput, TouchableOpacity, View, ScrollView } from "reac
 import Style from "./style";
 import GStyle from "../global/style/style.js";
 import { StatusBar } from "expo-status-bar";
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Registro({navigator}){
+    
+    const items = [
+        {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}},
+        {text: "Nome", acao: (value)=>{setNome(value)}},
+        {text: "Email", acao: (value)=>{setEmail(value)}},
+        {text: "Telefone", keyboardtype:'number-pad', acao: (value)=>{setTelefone(value)}},
+        {text: "Senha", type: "pass", acao: (value)=>{setSenha(value)}},
+        {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}}
+    ]
+    
+    const [getFoto, setFoto] = useState(null);
+    
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          base64: true,
+          allowsEditing: true,
+          aspect: [1, 1],
+          quality: 1,
+        });
+
+    
+        if (!result.cancelled) {
+            setFoto(result.uri);
+        }
+    };
 
     const [getCPF, setCPF] = useState("");
     const [getNome, setNome] = useState("");
@@ -14,17 +41,7 @@ export default function Registro({navigator}){
     const [getSenha2, setSenha2] = useState("");
     const [getMsg, setMsg] = useState({msg: "",style: Style.removemsg});
 
-    const items = [
-        {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}},
-        {text: "Nome", acao: (value)=>{setNome(value)}},
-        {text: "Email", acao: (value)=>{setEmail(value)}},
-        {text: "Telefone", keyboardtype:'number-pad', acao: (value)=>{setTelefone(value)}},
-        {text: "Senha", type: "pass", acao: (value)=>{setSenha(value)}},
-        {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}}
-    ]
-
     const registrar = () => {
-        console.log(getSenha, getSenha2)
         if(getSenha === getSenha2){
             let json = {
                 cpf: getCPF,
@@ -32,7 +49,9 @@ export default function Registro({navigator}){
                 email: getEmail,
                 telefone: getTelefone,
                 senha: getSenha,
+                foto: getFoto
             }
+            console.log(json)
         }else{
             console.log("erro")
             setMsg({
@@ -65,7 +84,7 @@ export default function Registro({navigator}){
                         }
                     })
                 }
-                <TouchableOpacity style={Style.addPhoto}>
+                <TouchableOpacity style={Style.addPhoto} onPress={()=>{pickImage()}}>
                     <Text style={Style.textAddPhoto}>Escolha uma foto</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={GStyle.button} onPress={()=>registrar()}>
