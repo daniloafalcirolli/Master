@@ -20,16 +20,18 @@
 
     <div class="form">
         <form method="post">
-            <input type="text" placeholder="CPF" id="cad_cpf" oninput="maskCPF(this)" required>
-            <input type="password" placeholder="Senha" id="log_senha" onkeyup="setPw(this)">
+            <input type="text" placeholder="CPF" id="log_cpf" oninput="maskCPF(this)" required>
+            <input type="password" placeholder="Senha" id="log_senha" >
         </form>
     </div>
 
     <div class="div_btn">
-        <button type="submit" id="btn" onclick="login()">Login</button>
+        <button type="button" id="btn" onclick="login()">Login</button>
     </div>
     
     
 </body>
+<script src="../global/md5.js"></script>
+<script src="../global/global.js"></script>
 <script src="script/script.js"></script>
 </html>

@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+#avatar{
+    border: none;
+    padding: 0;
+}
+
 #avatar::-webkit-file-upload-button {
     visibility: hidden;
 }
@@ -14,13 +19,15 @@
     background: #fff;
     border: 2px solid red;
     border-radius: 3px;
-    padding: 5px 8px;
+    padding: 15px 0px;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
     color: red;
     font-weight: 700;
+    width: 19.8vw;
+    text-align: center;
 }
 
 #avatar:hover::before {
@@ -32,14 +39,4 @@
 
 #avatar:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
-
-.img{
-    display: flex;
-    align-items: center;
-}
-
-.img input{
-    width: 13vw;
-    border: none;
 }

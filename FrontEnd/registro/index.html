@@ -21,23 +21,22 @@
     <div class="mid">
         
         <div class="form">
-            <form method="post">
+            <form action="#" method="post">
                 <div>
-                    <input type="text" placeholder="Nome Completo" id="reg_senha" required>
+                    <input type="text" placeholder="Nome Completo" id="reg_nome" required>
                     <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
                     <input type="email" placeholder="E-mail" id="reg_email" required>
+                    <input type="text" placeholder="Cargo" id="reg_cargo" required>
+                    
                 </div>
                 <div>
                     <input type="text" placeholder="Telefone" id="reg_tel" required>
-                    <input type="text" placeholder="Senha" id="reg_tel" required>
-                    <input type="password" placeholder="Senha" id="reg_senha" onkeyup="setPw(this)">
+                    <input type="password" placeholder="Senha" id="reg_pw1" required>
+                    <input type="password" placeholder="Confirme a senha" id="reg_pw2" required>
+                    <input type="file" id="avatar" accept="image/png, image/jpg, image/jpeg">
                 </div>
                 
             </form>
-        </div>
-
-        <div class="img">
-            <input type="file" id="avatar" accept="image/png, image/jpg, image/jpeg">
         </div>
     
         <div class="div_btn">
@@ -46,5 +45,7 @@
     </div>
     
 </body>
+<script src="../global/md5.js"></script>
+<script src="../global/global.js"></script>
 <script src="script/script.js"></script>
 </html>
