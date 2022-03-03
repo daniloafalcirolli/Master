@@ -11,12 +11,10 @@ export default StyleSheet.create({
         height:150,
         alignSelf: "center",
         borderWidth: 4,
-        // borderColor: "#E7E7E7",
         marginBottom: -40,
         borderRadius: 50
     },
     backInfo: {
-        // backgroundColor: "#E7E7E7",
         paddingTop: 40,
         paddingBottom: 50,
     },
@@ -52,8 +50,8 @@ export default StyleSheet.create({
     },
     altInfoText: {
         color: "#F00",
-        textAlign: "left",
-        marginLeft: 20,
+        textAlign: "right",
+        marginRight: 10,
         fontSize: 20
     },
     button: {

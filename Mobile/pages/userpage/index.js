@@ -4,11 +4,13 @@ import Style from "./style.js";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-export default function UserPage({navigator}){
+export default function UserPage({navigator, route}){
+    
+    const {nome, cpf, email, telefone} = route.params
 
     const json = [
-        {text:"Email"},
-        {text:"Telefone"},
+        {text:"Email", value: email},
+        {text:"Telefone" , value: telefone},
         {text:"Nova Senha",type: "pass"},
     ]
 
@@ -21,10 +23,10 @@ export default function UserPage({navigator}){
             <ScrollView>
                 <Image style={Style.Img} source={require("../global/assets/userimage.jpg")}/>
                 <View style={Style.backInfo}>
-                    <Text style={Style.nome}>Fulado de tal da silva sauro que não sei o nome</Text>
+                    <Text style={Style.nome}>{nome}</Text>
                     <View style={Style.cpf}>
                         <Text style={Style.cpfText}> CPF </Text> 
-                        <Text style={Style.cpfInfo}> 17851872587 </Text> 
+                        <Text style={Style.cpfInfo}> {cpf} </Text> 
                     </View>
                     <View style={Style.form}>
                         <Text style={Style.altInfoText}>Alterar Informações</Text>
@@ -34,7 +36,7 @@ export default function UserPage({navigator}){
                                 if(e.type == "pass"){
                                     return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} secureTextEntry={true} placeholder={e.text} ></TextInput>);
                                 }else{
-                                    return(<TextInput style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} ></TextInput>)
+                                    return(<TextInput style={getStyle} placeholderTextColor="#F00" value={e.value} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} ></TextInput>)
                                 }
                             })
                         }

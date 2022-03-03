@@ -1,8 +1,13 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     page:{
-        height: '100%',
         backgroundColor: "#FFF",
+        flex: 1
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'space-around',
+        // height:'calc(100% - 60px)'
     },
     loginText: {
         textAlign: 'center',
@@ -11,11 +16,15 @@ export default StyleSheet.create({
         textShadowColor: "rgba(0,0,0,0.2)",
         textShadowOffset: {width: 3, height: 3},
         textShadowRadius: 10,
-        marginTop: 40,
-        marginBottom: 100
     },
     form: {
         alignItems: 'center',
-        marginBottom: 60
+    },
+    msg: {
+        backgroundColor: "#F00",
+        color: "#FFF"
+    },
+    msgOff: {
+        display:'none'
     }
 })

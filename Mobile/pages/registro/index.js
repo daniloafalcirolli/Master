@@ -5,8 +5,8 @@ import GStyle from "../global/style/style.js";
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Registro({navigator}){
-    
+export default function Registro({ navigator }){
+
     const items = [
         {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}},
         {text: "Nome", acao: (value)=>{setNome(value)}},
@@ -28,8 +28,8 @@ export default function Registro({navigator}){
         });
 
     
-        if (!result.cancelled) {
-            setFoto(result.uri);
+        if (!result.cancelled && result.base64.length < 60000) {
+            setFoto('data:image/jpeg;base64,' + result.base64,)
         }
     };
 
@@ -42,26 +42,32 @@ export default function Registro({navigator}){
     const [getMsg, setMsg] = useState({msg: "",style: Style.removemsg});
 
     const registrar = () => {
-        if(getSenha === getSenha2){
-            let json = {
+        if(getSenha === getSenha2 && (getSenha != "" || getSenha2 != "")){
+            let reg = {
                 cpf: getCPF,
                 nome: getNome,
                 email: getEmail,
                 telefone: getTelefone,
                 senha: getSenha,
-                foto: getFoto
+                foto: getFoto,
+                cargo : "professor",
             }
-            console.log(json)
-        }else{
-            console.log("erro")
-            setMsg({
-                text: "As senhas não conferem",
-                style: Style.msg
+            console.log(reg)
+            let settings = {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(reg),
+            }
+            async function post() {
+                let info = await fetch("http://10.87.207.30:3000/usuario", settings);
+                let resp = await info.json();
+                return resp;
+            }
+            post().then(resp=>{
+                console.log(resp)
             })
-            setTimeout(()=>{setMsg({
-                msg: "",
-                style: Style.removemsg
-            })}, 3000)
         }
     }
 

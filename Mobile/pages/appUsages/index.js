@@ -6,10 +6,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default function AppUsages({navigator}){
+export default function AppUsages({navigation, route}){
+    // console.log(route)
     return(
         <Tab.Navigator barStyle={{ backgroundColor: '#FFF' }} activeColor="#F00" >
-            <Tab.Screen name="Usuario" component={UserPage} options={{headerShown:false}} options={{tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="account" color={color} size={26} />),}}></Tab.Screen>
+            <Tab.Screen name="Usuario" component={UserPage} initialParams={route.params}  options={{headerShown:false}} options={{tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="account" color={color} size={26} />),}}></Tab.Screen>
             <Tab.Screen name="Registro" component={Registro} options={{headerShown:false}} options={{tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="account-multiple-plus" color={color} size={26} />),}}></Tab.Screen>
         </Tab.Navigator> 
     );
