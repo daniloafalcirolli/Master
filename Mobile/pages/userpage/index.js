@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 
 export default function UserPage({navigator, route}){
     
-    const {nome, cpf, email, telefone} = route.params
+    const {nome, cpf, email, telefone, foto} = route.params
 
     const json = [
         {text:"Email", value: email},
@@ -21,7 +21,7 @@ export default function UserPage({navigator, route}){
                 <Image style={GStyle.image} source={require('../global/assets/logo.png')}/>
             </View>
             <ScrollView>
-                <Image style={Style.Img} source={require("../global/assets/userimage.jpg")}/>
+                <Image style={Style.Img} source={{uri: "data:image/jpeg;base64,"+foto}}/>
                 <View style={Style.backInfo}>
                     <Text style={Style.nome}>{nome}</Text>
                     <View style={Style.cpf}>

@@ -3,6 +3,7 @@ import { Image, Text, TextInput, TouchableOpacity, View, ScrollView } from "reac
 import Style from "./style";
 import GStyle from "../global/style/style.js";
 import { StatusBar } from "expo-status-bar";
+import md5 from "../global/script/md5.js"
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Registro({ navigator }){
@@ -16,11 +17,11 @@ export default function Registro({ navigator }){
         {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}}
     ]
     
-    const [getFoto, setFoto] = useState(null);
+    const [getFoto, setFoto] = useState('');
     
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          mediaTypes: ImagePicker.MediaTypeOptions.photo,
           base64: true,
           allowsEditing: true,
           aspect: [1, 1],
@@ -28,8 +29,11 @@ export default function Registro({ navigator }){
         });
 
     
-        if (!result.cancelled && result.base64.length < 60000) {
-            setFoto('data:image/jpeg;base64,' + result.base64,)
+        if (!result.cancelled && result.base64.length < 1000000) {
+            setFoto(result.base64);
+        }
+        else if(!result.cancelled){
+            alert('Selecione uma imagem menor');
         }
     };
 
@@ -39,7 +43,6 @@ export default function Registro({ navigator }){
     const [getTelefone, setTelefone] = useState("");
     const [getSenha, setSenha] = useState("");
     const [getSenha2, setSenha2] = useState("");
-    const [getMsg, setMsg] = useState({msg: "",style: Style.removemsg});
 
     const registrar = () => {
         if(getSenha === getSenha2 && (getSenha != "" || getSenha2 != "")){
@@ -48,11 +51,10 @@ export default function Registro({ navigator }){
                 nome: getNome,
                 email: getEmail,
                 telefone: getTelefone,
-                senha: getSenha,
+                senha: md5(getSenha),
                 foto: getFoto,
                 cargo : "professor",
             }
-            console.log(reg)
             let settings = {
                 method: "POST",
                 headers: {
@@ -61,12 +63,14 @@ export default function Registro({ navigator }){
                 body: JSON.stringify(reg),
             }
             async function post() {
-                let info = await fetch("http://10.87.207.30:3000/usuario", settings);
+                let info = await fetch("http://192.168.0.101:3000/usuario", settings);
                 let resp = await info.json();
                 return resp;
             }
             post().then(resp=>{
-                console.log(resp)
+                if(resp.length === 1){
+                    navigator.navigate('UserPage');
+                }
             })
         }
     }
@@ -79,7 +83,6 @@ export default function Registro({ navigator }){
             </View>
             <ScrollView style={Style.scroll}>
                 <Text style={Style.regText}>Registro</Text>
-                <Text style={getMsg.style}>{getMsg.text}</Text>
                 {
                     items.map((e, index)=>{
                         let [getStyle, setStyle] = React.useState(GStyle.input);

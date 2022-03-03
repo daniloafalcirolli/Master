@@ -7,7 +7,7 @@ import md5 from "../global/script/md5";
 
 export default function Login({navigation}){
     
-    const [getMSG, setMSG] = React.useState("");
+    const [getMSG, setMSG] = React.useState({text: "", style: Style.msgOff});
 
     const json = [
         {text:"CPF", keyboardtype: "number-pad"},
@@ -18,7 +18,7 @@ export default function Login({navigation}){
     const [getCPF, setCPF] =  React.useState("");
 
     const logar = () => {
-        let log = {
+        let json = {
             cpf: getCPF,
             senha: md5(getSenha)
         }
@@ -27,10 +27,10 @@ export default function Login({navigation}){
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(log),
+            body: JSON.stringify(json),
         }
         async function post() {
-            let info = await fetch("http://10.87.207.30:3000/login", settings);
+            let info = await fetch("http://192.168.0.101:3000/login", settings);
             let resp = await info.json();
             return resp;
         }
@@ -38,7 +38,10 @@ export default function Login({navigation}){
             if(resp.length === 1){
                 navigation.navigate('App', resp[0]);
             }else{
-                setMSG("CPF ou Senha incorretos");
+                setMSG({text: "CPF ou Senha incorretos", style: Style.msg});
+                setTimeout(()=>{
+                    setMSG({text: "", style: Style.msgOff});
+                },4000);
             }
         })
     }
@@ -63,7 +66,7 @@ export default function Login({navigation}){
                         })
                     }
                 </View>
-                <Text style={Style.msgOff}>{getMSG}</Text>
+                <Text style={getMSG.style}>{getMSG.text}</Text>
                 <TouchableOpacity style={GStyle.button} onPress={()=>logar()}>
                     <Text style={GStyle.textButton}>Logar</Text>
                 </TouchableOpacity>

@@ -7,7 +7,6 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-around',
-        // height:'calc(100% - 60px)'
     },
     loginText: {
         textAlign: 'center',
@@ -22,7 +21,12 @@ export default StyleSheet.create({
     },
     msg: {
         backgroundColor: "#F00",
-        color: "#FFF"
+        color: "#FFF",
+        textAlign:"center",
+        fontSize: 30,
+        width: "90%",
+        alignSelf: "center",
+        padding: 10
     },
     msgOff: {
         display:'none'
