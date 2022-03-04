@@ -31,16 +31,16 @@ export default StyleSheet.create({
         padding: 10,
         margin: 10
     },
-    msg:{
+    msg: {
         backgroundColor: "#F00",
         color: "#FFF",
-        padding: 10,
-        alignSelf: 'center',
-        fontSize: 20,
-        width: 300,
-        textAlign: 'center',
+        textAlign:"center",
+        fontSize: 27,
+        width: "90%",
+        alignSelf: "center",
+        padding: 7
     },
-    removemsg: {
-        display: "none"
+    msgOff: {
+        display:'none'
     }
 })

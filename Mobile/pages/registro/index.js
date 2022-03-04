@@ -8,35 +8,24 @@ import * as ImagePicker from 'expo-image-picker';
 
 export default function Registro({ navigator }){
 
-    const items = [
-        {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}},
-        {text: "Nome", acao: (value)=>{setNome(value)}},
-        {text: "Email", acao: (value)=>{setEmail(value)}},
-        {text: "Telefone", keyboardtype:'number-pad', acao: (value)=>{setTelefone(value)}},
-        {text: "Senha", type: "pass", acao: (value)=>{setSenha(value)}},
-        {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}}
-    ]
-    
-    const [getFoto, setFoto] = useState('');
+    const [getMSG, setMSG] = useState({text: "", style: Style.msgOff});
     
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.photo,
-          base64: true,
-          allowsEditing: true,
-          aspect: [1, 1],
-          quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.photo,
+            base64: true,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
         });
-
-    
-        if (!result.cancelled && result.base64.length < 1000000) {
+        
+        
+        if (!result.cancelled) {
             setFoto(result.base64);
         }
-        else if(!result.cancelled){
-            alert('Selecione uma imagem menor');
-        }
     };
-
+    
+    const [getFoto, setFoto] = useState("");
     const [getCPF, setCPF] = useState("");
     const [getNome, setNome] = useState("");
     const [getEmail, setEmail] = useState("");
@@ -44,16 +33,25 @@ export default function Registro({ navigator }){
     const [getSenha, setSenha] = useState("");
     const [getSenha2, setSenha2] = useState("");
 
+    const items = [
+        {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}, valor: getCPF},
+        {text: "Nome", acao: (value)=>{setNome(value)}, value: getNome},
+        {text: "Email", acao: (value)=>{setEmail(value)}, value: getEmail},
+        {text: "Telefone", keyboardtype:'number-pad', acao: (value)=>{setTelefone(value)}, value: getTelefone},
+        {text: "Senha", type: "pass", acao: (value)=>{setSenha(value)}, value: getSenha},
+        {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}, value: getSenha2}
+    ]
+    
     const registrar = () => {
-        if(getSenha === getSenha2 && (getSenha != "" || getSenha2 != "")){
+        if(getSenha === getSenha2 && getSenha != "" && getSenha2 != "" && getCPF != "" && getNome != "" && getEmail != "" && getTelefone != ""){
             let reg = {
-                cpf: getCPF,
                 nome: getNome,
-                email: getEmail,
                 telefone: getTelefone,
+                cargo : "professor",
+                email: getEmail,
                 senha: md5(getSenha),
                 foto: getFoto,
-                cargo : "professor",
+                cpf: getCPF,
             }
             let settings = {
                 method: "POST",
@@ -63,15 +61,35 @@ export default function Registro({ navigator }){
                 body: JSON.stringify(reg),
             }
             async function post() {
-                let info = await fetch("http://192.168.0.101:3000/usuario", settings);
+                let info = await fetch("http://10.87.207.30:3000/usuario ", settings);
                 let resp = await info.json();
                 return resp;
             }
             post().then(resp=>{
-                if(resp.length === 1){
-                    navigator.navigate('UserPage');
+                if(resp.id === undefined){
+                    setMSG({text: resp.msg || "Algum camp já existe, tente novamente.", style: Style.msg});
+                    setTimeout(()=>{
+                        setMSG({text: "", style: Style.msgOff});
+                    },4000);
+                }else{
+                    setCPF("");
+                    setNome("");
+                    setEmail("");
+                    setTelefone("");
+                    setFoto("");
+                    setSenha("");
+                    setSenha2("");
+                    setMSG({text: "Adicionado com sucesso", style: Style.msg});
+                    setTimeout(()=>{
+                        setMSG({text: "", style: Style.msgOff});
+                    },4000);
                 }
             })
+        }else{
+            setMSG({text: "Algum campo não está preencido, tente novamente.", style: Style.msg});
+            setTimeout(()=>{
+                setMSG({text: "", style: Style.msgOff});
+            },4000);
         }
     }
 
@@ -83,13 +101,14 @@ export default function Registro({ navigator }){
             </View>
             <ScrollView style={Style.scroll}>
                 <Text style={Style.regText}>Registro</Text>
+                <Text style={getMSG['style']}>{getMSG["text"]}</Text>
                 {
                     items.map((e, index)=>{
                         let [getStyle, setStyle] = React.useState(GStyle.input);
                         if(e.type == "pass"){
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} secureTextEntry={true} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text}></TextInput>);
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.valor} secureTextEntry={true}></TextInput>);
                         }else{
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" keyboardType={e.keyboardtype} onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} ></TextInput>)
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.valor} keyboardType={e.keyboardtype}></TextInput>)
                         }
                     })
                 }
@@ -97,7 +116,7 @@ export default function Registro({ navigator }){
                     <Text style={Style.textAddPhoto}>Escolha uma foto</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={GStyle.button} onPress={()=>registrar()}>
-                    <Text style={GStyle.textButton} >Registrar</Text>
+                    <Text style={GStyle.textButton}>Registrar</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>
