@@ -4,6 +4,7 @@ import Style from "./style";
 import GStyle from "../global/style/style.js";
 import { StatusBar } from "expo-status-bar";
 import md5 from "../global/script/md5";
+import MaskInput from "react-native-mask-input";
 
 export default function Login({navigation}){
     
@@ -61,7 +62,7 @@ export default function Login({navigation}){
                             if(e.type == "pass"){
                                 return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e)=>setSenha(e)} placeholder={e.text} secureTextEntry={true}></TextInput>);
                             }else{
-                                return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e)=>setCPF(e)} placeholder={e.text} keyboardType={e.keyboardtype}></TextInput>)
+                                return(<MaskInput style={getStyle} value={getCPF} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e, e2)=>{setCPF(e)}} placeholder={e.text} mask={[/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '-',/\d/, /\d/]} keyboardType={e.keyboardtype}></MaskInput>)
                             }
                         })
                     }

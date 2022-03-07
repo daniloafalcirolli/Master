@@ -1,10 +1,11 @@
-import React, {useState} from "react";
 import { Image, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
-import Style from "./style";
+import * as ImagePicker from 'expo-image-picker';
 import GStyle from "../global/style/style.js";
 import { StatusBar } from "expo-status-bar";
 import md5 from "../global/script/md5.js"
-import * as ImagePicker from 'expo-image-picker';
+import React, {useState} from "react";
+import Style from "./style";
+import MaskInput from "react-native-mask-input";
 
 export default function Registro({ navigator }){
 
@@ -34,14 +35,14 @@ export default function Registro({ navigator }){
     const [getSenha2, setSenha2] = useState("");
 
     const items = [
-        {text: "CPF", keyboardtype:'number-pad' ,acao: (value)=>{setCPF(value)}, valor: getCPF},
+        {text: "CPF" ,acao: (value)=>{setCPF(value)}, value: getCPF, mask: [/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '-',/\d/, /\d/], keyboardtype:'number-pad'},
         {text: "Nome", acao: (value)=>{setNome(value)}, value: getNome},
         {text: "Email", acao: (value)=>{setEmail(value)}, value: getEmail},
-        {text: "Telefone", keyboardtype:'number-pad', acao: (value)=>{setTelefone(value)}, value: getTelefone},
-        {text: "Senha", type: "pass", acao: (value)=>{setSenha(value)}, value: getSenha},
-        {text: "Conf. Senha",type: "pass", acao: (value)=>{setSenha2(value)}, value: getSenha2}
+        {text: "Telefone", acao: (value)=>{setTelefone(value)}, value: getTelefone, mask: ["(", /\d/, /\d/, ")", ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/], keyboardtype:'number-pad'},
+        {text: "Senha", acao: (value)=>{setSenha(value)}, value: getSenha, type: "pass"},
+        {text: "Conf. Senha", acao: (value)=>{setSenha2(value)}, value: getSenha2, type: "pass"}
     ]
-    
+
     const registrar = () => {
         if(getSenha === getSenha2 && getSenha != "" && getSenha2 != "" && getCPF != "" && getNome != "" && getEmail != "" && getTelefone != ""){
             let reg = {
@@ -53,6 +54,7 @@ export default function Registro({ navigator }){
                 foto: getFoto,
                 cpf: getCPF,
             }
+            console.log(reg)
             let settings = {
                 method: "POST",
                 headers: {
@@ -106,9 +108,9 @@ export default function Registro({ navigator }){
                     items.map((e, index)=>{
                         let [getStyle, setStyle] = React.useState(GStyle.input);
                         if(e.type == "pass"){
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.valor} secureTextEntry={true}></TextInput>);
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element), console.log(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value}  secureTextEntry={true}></TextInput>);
                         }else{
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.valor} keyboardType={e.keyboardtype}></TextInput>)
+                            return(<MaskInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} mask={e.mask} keyboardType={e.keyboardtype}></MaskInput>)
                         }
                     })
                 }
