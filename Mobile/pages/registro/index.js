@@ -51,10 +51,9 @@ export default function Registro({ navigator }){
                 cargo : "professor",
                 email: getEmail,
                 senha: md5(getSenha),
-                foto: getFoto,
+                foto: "data:image/jpeg;base64,"+getFoto,
                 cpf: getCPF,
             }
-            console.log(reg)
             let settings = {
                 method: "POST",
                 headers: {
@@ -69,7 +68,7 @@ export default function Registro({ navigator }){
             }
             post().then(resp=>{
                 if(resp.id === undefined){
-                    setMSG({text: resp.msg || "Algum camp já existe, tente novamente.", style: Style.msg});
+                    setMSG({text: resp.msg || "Algum campo já existe, tente novamente.", style: Style.msg});
                     setTimeout(()=>{
                         setMSG({text: "", style: Style.msgOff});
                     },4000);
@@ -108,7 +107,7 @@ export default function Registro({ navigator }){
                     items.map((e, index)=>{
                         let [getStyle, setStyle] = React.useState(GStyle.input);
                         if(e.type == "pass"){
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element), console.log(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value}  secureTextEntry={true}></TextInput>);
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value}  secureTextEntry={true}></TextInput>);
                         }else{
                             return(<MaskInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} mask={e.mask} keyboardType={e.keyboardtype}></MaskInput>)
                         }
