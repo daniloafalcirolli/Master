@@ -6,7 +6,7 @@ function registro() {
     let cpf = document.querySelector("#reg_cpf").value;
     let email = document.querySelector("#reg_email").value;
     let cargo = document.querySelector("#reg_cargo").value;
-    let tel = document.querySelector("#reg_tel").value;
+    let tel = document.querySelector("#tel").value;
     let pw1 = document.querySelector("#reg_pw1").value;
     let pw2 = document.querySelector("#reg_pw2").value;
     let pwf = "";
@@ -25,7 +25,8 @@ function registro() {
         "email" : email,
         "senha" : pwf,
         "cpf" : cpf,
-        "foto" : img
+        "foto" : img,
+        "resetsenha" : false
     }
 
     fetch(url, {
