@@ -21,6 +21,13 @@ export default StyleSheet.create({
         color: "#F00",
         textAlign: "center",
     },
+    picker: {
+        width: '80%',
+        alignSelf: "center",
+        padding: 10,
+        borderWidth: 2,
+        borderColor: "#F00",
+    },
     addPhoto: {
         alignSelf: 'center',
         width: 300,

@@ -14,4 +14,31 @@ export default StyleSheet.create({
         textShadowRadius: 10,
         marginBottom: 70
     },
+    container: {
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-evenly",
+        alignItems: "center"
+    },
+    containerBlack: {
+        backgroundColor: "#e7e7e7",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-evenly",
+        alignItems: "center"
+    },
+    botaoReset: {
+        backgroundColor: "#F00",
+        height: "100%",
+    },
+    textReset:{
+        color: "#FFF",
+        fontSize: 15,
+        padding: 7
+    },
+    nome: {
+        width: 150,
+        textAlign: "center",
+    },
+
 })

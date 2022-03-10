@@ -37,7 +37,11 @@ export default function Login({navigation}){
         }
         post().then(resp=>{
             if(resp.length === 1){
-                navigation.navigate('App', resp[0]);
+                if(resp[0].resetsenha == true && getSenha == "123456789"){
+                    navigation.navigate('ResetSenha', resp[0]);
+                }else{
+                    navigation.navigate('App', resp[0]);
+                }
             }else{
                 setMSG({text: "CPF ou Senha incorretos", style: Style.msg});
                 setTimeout(()=>{

@@ -4,10 +4,8 @@ import Style from "./style.js";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import MaskInput from "react-native-mask-input";
-import md5 from "../global/script/md5";
 
 export default function UserPage({navigator, route}){
-    
     const {nome, cpf, email, telefone, foto, id} = route.params
     const [getEmail, setEmail] = React.useState(email);
     const [getTelefone, setTelefone] = React.useState(telefone);
@@ -22,7 +20,6 @@ export default function UserPage({navigator, route}){
             email: getEmail,
             telfone: getTelefone,
         }
-        console.log(alt)
         async function alterarInfo(){
             let settings = {
                 method: "PUT",
@@ -32,10 +29,11 @@ export default function UserPage({navigator, route}){
                 body: JSON.stringify(alt)
             }
             let info = await fetch(`http://10.87.207.30:3000/usuario/${id}`, settings);
-            return info.json();
+            let resp = info.json();
+            return resp;
         }
         alterarInfo().then(resp=>{
-            console.log(resp);
+            
         })
     }
 

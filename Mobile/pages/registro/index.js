@@ -6,6 +6,7 @@ import md5 from "../global/script/md5.js"
 import React, {useState} from "react";
 import Style from "./style";
 import MaskInput from "react-native-mask-input";
+import {Picker} from '@react-native-picker/picker';
 
 export default function Registro({ navigator }){
 
@@ -21,8 +22,9 @@ export default function Registro({ navigator }){
         });
         
         
+        let item = result.uri.split(".")
         if (!result.cancelled) {
-            setFoto(result.base64);
+            setFoto(`data:image/${item[item.length-1]};base64,`+result.base64);
         }
     };
     
@@ -33,7 +35,8 @@ export default function Registro({ navigator }){
     const [getTelefone, setTelefone] = useState("");
     const [getSenha, setSenha] = useState("");
     const [getSenha2, setSenha2] = useState("");
-
+    const [getCargo, setCargo] = useState("");
+ 
     const items = [
         {text: "CPF" ,acao: (value)=>{setCPF(value)}, value: getCPF, mask: [/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '-',/\d/, /\d/], keyboardtype:'number-pad'},
         {text: "Nome", acao: (value)=>{setNome(value)}, value: getNome},
@@ -44,15 +47,17 @@ export default function Registro({ navigator }){
     ]
 
     const registrar = () => {
-        if(getSenha === getSenha2 && getSenha != "" && getSenha2 != "" && getCPF != "" && getNome != "" && getEmail != "" && getTelefone != ""){
+        if((getSenha === getSenha2 && getSenha != "" && getSenha2 != "" && getCPF != "" && getNome != "" && getEmail != "" && getTelefone != "")){
             let reg = {
                 nome: getNome,
                 telefone: getTelefone,
                 cargo : "professor",
                 email: getEmail,
                 senha: md5(getSenha),
-                foto: "data:image/jpeg;base64,"+getFoto,
+                foto: getFoto,
                 cpf: getCPF,
+                cargo: getCargo,
+                resetsenha: false
             }
             let settings = {
                 method: "POST",
@@ -73,6 +78,7 @@ export default function Registro({ navigator }){
                         setMSG({text: "", style: Style.msgOff});
                     },4000);
                 }else{
+                    
                     setCPF("");
                     setNome("");
                     setEmail("");
@@ -83,6 +89,7 @@ export default function Registro({ navigator }){
                     setMSG({text: "Adicionado com sucesso", style: Style.msg});
                     setTimeout(()=>{
                         setMSG({text: "", style: Style.msgOff});
+                        alert("Cadastrado com sucesso")
                     },4000);
                 }
             })
@@ -113,6 +120,21 @@ export default function Registro({ navigator }){
                         }
                     })
                 }
+                <Picker style={Style.picker} selectedValue={getCargo} onValueChange={(value) => setCargo(value)}>
+                    <Picker.Item label="Analista de Qualidade de Vida" value="Analista de Qualidade de Vida"/>
+                    <Picker.Item label="Assistente de Apoio Técnico" value="Assistente de Apoio Técnico"/>
+                    <Picker.Item label="Assistente de Serviço Administrativo" value="Assistente de Serviço Administrativo"/>
+                    <Picker.Item label="Auxiliar de Manutenção" value="Auxiliar de Manutenção"/>
+                    <Picker.Item label="Bibliotecária" value="Bibliotecária"/>
+                    <Picker.Item label="Coordenador de Atividades Técnicas" value="Coordenador de Atividades Técnicas"/>
+                    <Picker.Item label="Coordenador de Relacionamento Com a Industria" value="Coordenador de Relacionamento Com a Industria"/>
+                    <Picker.Item label="Diretor de Unidade de Formação Profissional" value="Diretor de Unidade de Formação Profissional"/>
+                    <Picker.Item label="Gerente Administrativo Financeiro" value="Gerente Administrativo Financeiro"/>
+                    <Picker.Item label="Instrutor de Formação Profissional" value="Instrutor de Formação Profissional"/>
+                    <Picker.Item label="Oficial de Manutenção" value="Oficial de Manutenção"/>
+                    <Picker.Item label="Orientador de Prática Profissional" value="Orientador de Prática Profissional"/>
+                    <Picker.Item label="Professor CAI e CT" value="Professor CAI e CT"/>
+                </Picker>
                 <TouchableOpacity style={Style.addPhoto} onPress={()=>{pickImage()}}>
                     <Text style={Style.textAddPhoto}>Escolha uma foto</Text>
                 </TouchableOpacity>
