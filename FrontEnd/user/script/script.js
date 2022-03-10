@@ -25,15 +25,29 @@ function getInfo() {
 }
 
 function update(){
+    let email = document.querySelector("#user_email").value;
+    let tel = document.querySelector("#tel").value;
 
-    fetch(url)
-    .then(res => {
+    let obj = {
+        "telefone" : tel,
+        "email" : email,
+    }
+
+    fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj),
+    }).then(res => {
+        console.log(res); 
         return res.json();
-    }).then(data =>{
+    }).then(data => {
+        console.log(data);
 
-    }).catch(err =>[
-        console.log(err)
-    ])
+    }).catch(err => {
+        console.log(err);
+    })
 }
 
 function sair() {
