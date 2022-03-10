@@ -1,5 +1,5 @@
 window.onload = function(){
-   id('tel').onkeyup = function(){
+   document.getElementById('tel').onkeyup = function(){
       mascara( this, mtel );
    }
  }
@@ -12,7 +12,7 @@ function maskCPF(i){
        return;
     }
     
-    i.setAttribute("maxlength", "15");
+    i.setAttribute("maxlength", "14");
     if (v.length == 3 || v.length == 7) i.value += ".";
     if (v.length == 11) i.value += "-";
  

@@ -40,3 +40,13 @@
 #avatar:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
+select{
+    width: 20vw;
+    font-size: 25px;
+    padding: 15px;
+    margin: 20px 0;
+    border: none;
+    border-bottom: 2px solid red;
+    outline: none;
+}

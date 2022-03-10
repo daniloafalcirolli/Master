@@ -18,19 +18,17 @@
         <h1>Funcionarios</h1>
     </div>
 
+    <div class="pesquisa">
+        <input type="search" id="busca" placeholder="Buscar por nome..." onkeyup="buscar()">
+    </div>
+
     <table cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>NOME</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>00</td>
-                <td>Nome Sobrenome</td>
-                <td><button class="btn_reset" onclick="reset(this)">Resetar Senha</button></td>
+        
+        <tbody class="list">
+            <tr class="user model">
+                <td class="cpf">00</td>
+                <td class="nome">Nome Sobrenome</td>
+                <td><button class="btn_reset" onclick="reset(this)">Redefinir Senha</button></td>
             </tr>
         </tbody>
     </table>
