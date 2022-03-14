@@ -19,19 +19,22 @@
     </div>
 
     <div class="pesquisa">
-        <input type="search" id="busca" placeholder="Buscar por nome..." onkeyup="buscar()">
+        <input type="search" id="busca" placeholder="Buscar por nome ou CPF..." onkeyup="buscar()">
     </div>
 
-    <table cellspacing="0">
-        
-        <tbody class="list">
-            <tr class="user model">
-                <td class="cpf">00</td>
-                <td class="nome">Nome Sobrenome</td>
-                <td><button class="btn_reset" onclick="reset(this)">Redefinir Senha</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table">
+        <table cellspacing="0">
+            <tbody class="list">
+                <tr class="user model">
+                    <td class="cpf"></td>
+                    <td class="nome"></td>
+                    <td class="id" style="display: none"></td>
+                    <td><button class="btn_reset" onclick="reset(this)">Redefinir Senha</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 
 </body>
 <script src="../global/global.js"></script>

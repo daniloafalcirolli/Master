@@ -14,7 +14,7 @@
 }
 
 #avatar::before {
-    content: 'Selecione a foto';
+    content: attr(data-content);
     display: inline-block;
     background: #fff;
     border: 2px solid red;
@@ -38,7 +38,7 @@
 }
 
 #avatar:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    background: rgba(255, 0, 0, 0.4);
 }
 
 select{
@@ -49,4 +49,6 @@ select{
     border: none;
     border-bottom: 2px solid red;
     outline: none;
+    color: red;
+    font-weight: 700;
 }

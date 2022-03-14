@@ -1,3 +1,8 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 .pesquisa{
     width: 100%;
     display: flex;
@@ -5,10 +10,33 @@
     margin-bottom: 50px;
 }
 
+.table{
+    width: 98%;
+    height: 45vh;
+    overflow-y: scroll;
+    align-self: center;
+}
+
+.table::-webkit-scrollbar{
+    width: 15px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: #999;
+    border: 3px solid #fff;
+    border-radius: 6px;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 6px;
+}
+
 table{
     width: 100%;
     font-size: 20px;
     font-weight: bold;
+    align-self: center;
 }
 
 table tr{

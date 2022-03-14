@@ -1,6 +1,11 @@
 (init)();
 let img;
 
+document.querySelector("select").addEventListener("focus", () => {
+    document.querySelector("select").style.color = "black";
+    document.querySelector("select").style.fontWeight = "500";
+})
+
 function registro() {
     let nome = document.querySelector("#reg_nome").value;
     let cpf = document.querySelector("#reg_cpf").value;
@@ -10,7 +15,8 @@ function registro() {
     let pw1 = document.querySelector("#reg_pw1").value;
     let pw2 = document.querySelector("#reg_pw2").value;
     let pwf = "";
-    let url = "http://10.87.207.30:3000/usuario";
+    let url = 'http://10.87.207.30:3000/usuario';
+    // let url = 'http://localhost:3000/usuario';
 
     console.log(nome, cpf, cargo, email, tel, pw1, pw2)
 
@@ -64,6 +70,7 @@ alert("Usuario cadastrado com sucesso!")
 function events(){
     document.getElementById("avatar").addEventListener("change", (e) => {
         const file = e.target.files[0];
+        document.getElementById("avatar").dataset.content = file.name;
         const reader = new FileReader();
         reader.onloadend = () => {
             img = reader.result;

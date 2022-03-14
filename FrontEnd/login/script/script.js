@@ -15,12 +15,14 @@ function maskCPF(i){
  function login() {
     let cpf = document.querySelector("#log_cpf").value;
     let pw = md5(document.querySelector("#log_senha").value);
-    let url = "http://10.87.207.30:3000/login";
+    let url = 'http://10.87.207.30:3000/login';
+    // let url = 'http://localhost:3000/login';
+
     let data = {
         "cpf" : cpf,
         "senha" : pw
     }
-     console.log(data);
+    
     fetch(url, {
         method: "POST",
         headers: {
@@ -32,11 +34,15 @@ function maskCPF(i){
             console.log(res);
             return res.json();
         }).then(data => { 
-            console.log(data);
-            if (data[0].id != 0) {
-
-                localStorage.setItem("user",JSON.stringify(data[0].id));
-                window.location.href = "../user/index.html";
+            if (data.length != 0) {
+                if(data[0].resetsenha == true){
+                    localStorage.setItem("user",JSON.stringify(data[0].id));
+                    window.location.href = "../resetsenha/index.html";
+                }else{
+                    localStorage.setItem("user",JSON.stringify(data[0].id));
+                    window.location.href = "../user/index.html";
+                }
+                
             }else {
                 alert('CPF ou senha incorreto')
             }
