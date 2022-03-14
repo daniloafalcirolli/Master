@@ -1,7 +1,7 @@
 import React from "react";
 import GStyle from "../global/style/style.js";
 import Style from "./style.js";
-import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import MaskInput from "react-native-mask-input";
 
@@ -33,7 +33,11 @@ export default function UserPage({navigator, route}){
             return resp;
         }
         alterarInfo().then(resp=>{
-            
+            if(resp[0].id != undefined){
+                alert("Informações alteradas com sucesso");
+            }else{
+                alert("Não foi possivel alterar as informações");
+            }
         })
     }
 
@@ -57,7 +61,7 @@ export default function UserPage({navigator, route}){
                         {
                             json.map((e,index)=>{
                                 let [getStyle, setStyle] = React.useState(GStyle.input);
-                                return(<MaskInput key={index} style={getStyle} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} onChangeText={(element)=>{e.acao(element)}} mask={e.mask}></MaskInput>)
+                                return(<MaskInput key={index} style={getStyle} placeholderTextColor="#000" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} onChangeText={(element)=>{e.acao(element)}} mask={e.mask}></MaskInput>)
                             })
                         }
                     </View>

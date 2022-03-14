@@ -114,9 +114,9 @@ export default function Registro({ navigator }){
                     items.map((e, index)=>{
                         let [getStyle, setStyle] = React.useState(GStyle.input);
                         if(e.type == "pass"){
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value}  secureTextEntry={true}></TextInput>);
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#000" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value}  secureTextEntry={true}></TextInput>);
                         }else{
-                            return(<MaskInput style={getStyle} key={index} placeholderTextColor="#F00" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} mask={e.mask} keyboardType={e.keyboardtype}></MaskInput>)
+                            return(<MaskInput style={getStyle} key={index} placeholderTextColor="#000" onChangeText={(element)=>{e.acao(element)}} onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} placeholder={e.text} value={e.value} mask={e.mask} keyboardType={e.keyboardtype}></MaskInput>)
                         }
                     })
                 }

@@ -57,7 +57,7 @@ export default function ResetSenha({navigation, route}){
                     {
                         json.map((e,index)=>{
                             let [getStyle, setStyle] = React.useState(GStyle.input);
-                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(element)=>{e.acao(element)}} placeholder={e.text} secureTextEntry={true} value={e.value}></TextInput>);
+                            return(<TextInput style={getStyle} key={index} placeholderTextColor="#000" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(element)=>{e.acao(element)}} placeholder={e.text} secureTextEntry={true} value={e.value}></TextInput>);
                         })
                     }
                 </View>

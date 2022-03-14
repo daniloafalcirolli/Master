@@ -19,7 +19,7 @@ export default StyleSheet.create({
         borderBottomWidth: 2,
         fontSize:25,
         padding: 10,
-        margin: 10
+        margin: 10,
     },
     inputFocus: {
         alignSelf: 'center',
@@ -29,7 +29,7 @@ export default StyleSheet.create({
         borderWidth: 2,
         fontSize:25,
         padding: 10,
-        margin: 10
+        margin: 10,
     },
     button: {
         backgroundColor: "#F00",

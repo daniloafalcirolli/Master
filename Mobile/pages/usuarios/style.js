@@ -12,7 +12,7 @@ export default StyleSheet.create({
         textShadowColor: "rgba(0,0,0,0.2)",
         textShadowOffset: {width: 3, height: 3},
         textShadowRadius: 10,
-        marginBottom: 70
+        marginBottom: 40
     },
     container: {
         flexDirection: "row",
@@ -40,5 +40,5 @@ export default StyleSheet.create({
         width: 150,
         textAlign: "center",
     },
-
+    
 })

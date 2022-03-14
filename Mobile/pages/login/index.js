@@ -31,7 +31,7 @@ export default function Login({navigation}){
             body: JSON.stringify(json),
         }
         async function post() {
-            let info = await fetch("http://10.87.207.30:3000/login", settings);
+            let info = await fetch("http://10.87.207.30:3000/loginmobile", settings);
             let resp = await info.json();
             return resp;
         }
@@ -64,9 +64,9 @@ export default function Login({navigation}){
                         json.map((e,index)=>{
                             let [getStyle, setStyle] = React.useState(GStyle.input);
                             if(e.type == "pass"){
-                                return(<TextInput style={getStyle} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e)=>setSenha(e)} placeholder={e.text} secureTextEntry={true}></TextInput>);
+                                return(<TextInput style={getStyle} key={index} placeholderTextColor="#000" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e)=>setSenha(e)} placeholder={e.text} secureTextEntry={true}></TextInput>);
                             }else{
-                                return(<MaskInput style={getStyle} value={getCPF} key={index} placeholderTextColor="#F00" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e, e2)=>{setCPF(e)}} placeholder={e.text} mask={[/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '-',/\d/, /\d/]} keyboardType={e.keyboardtype}></MaskInput>)
+                                return(<MaskInput style={getStyle} value={getCPF} key={index} placeholderTextColor="#000" onFocus={()=>{setStyle(GStyle.inputFocus)}} onBlur={()=>{setStyle(GStyle.input)}} onChangeText={(e, e2)=>{setCPF(e)}} placeholder={e.text} mask={[/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '-',/\d/, /\d/]} keyboardType={e.keyboardtype}></MaskInput>)
                             }
                         })
                     }
