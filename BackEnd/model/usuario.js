@@ -41,17 +41,24 @@ class usuario extends Model{
                 type: DataTypes.BOOLEAN(50),
                 allowNull: true,
             },
+            carga_horaria: {
+                type: DataTypes.INTEGER(50),
+                allowNull: true,
+            },
+            formacao: {
+                type: DataTypes.STRING(50),
+                allowNull: true,
+            },
         },
         {
         sequelize: datacon,
         tableName: 'usuarios',
         modelName: 'usuario',
-        }
-        );
+        });
     }
     //METODO ASSOCIACAO DAS CHAVES PRIMARIAS
     static associate(models) {
-        usuario.hasMany(models.reserva, {foreignKey: 'id_usuario'});
+        usuario.hasMany(models.agenda, {foreignKey: 'id_docente'});
     }
     
 } 
