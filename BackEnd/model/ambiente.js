@@ -7,7 +7,7 @@ class ambiente extends Model{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'tipoAmbiente',
+                    model: 'tipo_ambiente',
                     key: 'id',
                 }
             },
@@ -15,14 +15,16 @@ class ambiente extends Model{
                 type: DataTypes.INTEGER(75),
                 allowNull: false,
             },
-        
+        },{
             sequelize: datacon,
             tableName: 'ambientes',
             modelName: 'ambiente',
         });
     }
     static associate(models) {
-      ambiente.hasMany(models.tipoAmbiente, {foreignKey: 'id_tipo'});
+        ambiente.belongsTo(models.tipoAmbiente, {foreignKey: 'id'});
+        ambiente.hasMany(models.ambiente, {foreignKey: 'id_ambiente'});
+        ambiente.hasMany(models.agenda, {foreignKey: 'id_agenda'});
     }
 };
 module.exports = ambiente;

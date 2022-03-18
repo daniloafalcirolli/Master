@@ -11,10 +11,14 @@ class componente extends Model{
                 type: DataTypes.FLOAT(7, 5),
                 allowNull: false,
             },
+        },{
             sequelize: datacon,
-            tableName: 'componetes',
+            tableName: 'componentes',
             modelName: 'componente',
         })
+    }
+    static associate(models) {
+        componente.hasMany(models.turmaComponente, {foreignKey: 'id_componente'});
     }
 }
 module.exports = componente;

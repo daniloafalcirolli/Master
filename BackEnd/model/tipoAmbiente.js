@@ -7,14 +7,16 @@ class tipoAmbiente extends Model{
                 type: DataTypes.STRING(100),
                 allowNull: false,
             },
+        },{
             sequelize: datacon,
             tableName: 'tipo_ambiente',
-            modelName: 'tipoAmbientes',
+            modelName: 'tipoAmbiente',
         })
         
     }
+
     static associate(models) {
         tipoAmbiente.hasMany(models.ambiente, {foreignKey: 'id'});
-      }
+    }
 }
 module.exports = tipoAmbiente;

@@ -7,23 +7,23 @@ class agenda extends Model{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'ambiente',
+                    model: 'ambientes',
                     key: 'id',
                 }
-            },
+           },
             id_turma: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                },
                 references: {
-                    model: 'turma',
+                    model: 'turmas',
                     key: 'id',
                 },
+            },
             id_docente: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'usuario',
+                    model: 'usuarios',
                     key: 'id',
                 }
             },
