@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global/global.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <header>
+        <img src="../global/img/logo.png" class="logo">
+    </header>
+
+    <div class="meio">
+        <div class="cadastro">
+            
+            <div>
+                <div class="filter">
+                    <span><input type="radio" name="filter"><label>Componente</label></span>
+                    <span><input type="radio" name="filter"><label>Ambiente</label></span>
+                </div>
+                <div class="filter">
+                    <span><input type="radio" name="filter"><label>Turma</label></span>
+                </div>
+            </div>
+
+            <h1>Registrar</h1>
+
+            <div class="campos">
+                <input type="text" id="dado1">
+                <input type="text" id="dado2">
+            </div>
+
+            <div class="button">
+                <button type="submit" id="btn" class="btn_add" onclick="add()">Adicionar</button>
+            </div>
+
+        </div>
+
+        <div class="lista">
+
+            <div class="pesquisa">
+                <input type="search" id="busca" placeholder="Buscar por nome ou CPF..." onkeyup="buscar()">
+            </div>
+
+            <div class="table">
+                <table cellspacing="0">
+                    <tbody class="list">
+                        <tr class="user model">
+                            <td class="id">1</td>
+                            <td class="nome">jose</td>
+                            <td><button id="btn" class="btn_edit" onclick="edit(this)">Editar</button></td>
+                            <td><button id="btn" class="btn_exclude" onclick="exclude(this)">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    
+    </div>
+    
+</body>
+<script src="../global/global.js"></script>
+<script src="script/script.js"></script>
+</html>

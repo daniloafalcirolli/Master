@@ -1,0 +1,124 @@
+.meio{
+    display: flex;
+    height: 92.2vh;
+}
+
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    border-right: 10px solid var(--p-color);
+}
+
+.filter{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.filter span{
+    display: flex;
+    margin: 5px 15px;
+    align-items: center;
+    color: var(--p-color);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.filter input{
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    appearance: none;
+    background-color: var(--p-color);
+    border: 2px solid var(--p-color);
+}
+
+.filter input:checked{
+    border: 5px solid var(--p-color);
+    background-color: #fff;
+}
+
+.cadastro h1{
+    color: var(--p-color);
+    border-bottom: 2px solid red;
+    padding: 0 20px;
+}
+
+.campos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.lista{
+    width: 70%;
+}
+
+.pesquisa{
+    padding: 50px 50px 70px;
+}
+
+.table{
+    height: 69.2vh;
+    overflow-y: scroll;
+    align-self: center;
+}
+
+.table::-webkit-scrollbar{
+    width: 15px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: #999;
+    border: 3px solid #fff;
+    border-radius: 6px;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: var(--p-color);
+    border-radius: 6px;
+}
+
+table{
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    align-self: center;
+}
+
+table tr{
+    text-align: left;
+}
+
+table td{
+    padding: 10px;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even){
+    background-color: #E7E7E7;
+}
+
+.id{
+    width: 10%;
+}
+
+.nome{
+    width: 60%;
+    text-align: left;
+}
+
+#btn{
+    font-size: 20px;
+}

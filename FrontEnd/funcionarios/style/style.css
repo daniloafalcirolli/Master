@@ -28,7 +28,7 @@ body{
 }
 
 .table::-webkit-scrollbar-thumb {
-    background: red;
+    background: var(--p-color);
     border-radius: 6px;
 }
 
@@ -68,7 +68,7 @@ tbody tr:nth-child(even){
 }
 
 .btn_reset{
-    background-color: red;
+    background-color: var(--p-color);
     color: #fff;
     border: none;
     padding: 15px;
