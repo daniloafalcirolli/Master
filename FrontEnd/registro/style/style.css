@@ -17,14 +17,14 @@
     content: attr(data-content);
     display: inline-block;
     background: #fff;
-    border: 2px solid red;
+    border: 2px solid var(--p-color);
     border-radius: 3px;
     padding: 15px 0px;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
-    color: red;
+    color: var(--p-color);
     font-weight: 700;
     width: 19.8vw;
     text-align: center;
@@ -32,7 +32,7 @@
 
 #avatar:hover::before {
     transition: .4s;
-    background: red;
+    background: var(--p-color);
     color: #fff
 
 }
@@ -47,8 +47,8 @@ select{
     padding: 15px;
     margin: 20px 0;
     border: none;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--p-color);
     outline: none;
-    color: red;
+    color: var(--p-color);
     font-weight: 700;
 }
