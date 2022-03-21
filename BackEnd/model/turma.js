@@ -8,7 +8,7 @@ class turma extends Model{
                 allowNull: false,
             },
             alunos: {
-                type: DataTypes.INTEGER(75),
+                type: DataTypes.INTEGER,
                 allowNull: false,
             }
         },
@@ -21,7 +21,7 @@ class turma extends Model{
     }
 
     static associate(models) {
-        turma.hasMany(models.turmaComponente, {foreignKey: 'id_turmas'});
+        turma.hasMany(models.turmaComponente, {foreignKey: 'id_turma'});
     }
 }
 module.exports = turma;

@@ -1,4 +1,4 @@
-const ambiente = require ('../model/ambiente');
+const turmaComponente = require ('../model/turmaComponente');
 
 const create = async (req, resp) => {
     const data = req.body;
@@ -6,7 +6,7 @@ const create = async (req, resp) => {
     try {
         console.log(data)
 
-        ret = await ambiente.create(data);
+        ret = await turmaComponente.create(data);
     }catch(err) {
         console.log(err);
         resp.status(400);
@@ -20,7 +20,7 @@ const read = async (req, resp) => {
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
     // FILTRO SEM ID, BUSCA TUDO NO BD
-    const ret = await ambiente.findAll(filtro);
+    const ret = await turmaComponente.findAll(filtro);
 
     console.log("TESTE READ", ret)
 
@@ -30,10 +30,10 @@ const read = async (req, resp) => {
 const update = async (req, resp) => {
     const id = req.params.id;
     const data = req.body;
-    let ret = await ambiente.update(data, {
+    let ret = await turmaComponente.update(data, {
         where : {id: id},
     });
-    ret = await ambiente.findAll({
+    ret = await turma.findAll({
         where : { id : id}
     })
     resp.json(ret);
@@ -41,7 +41,7 @@ const update = async (req, resp) => {
 
 const remove = async (req, res) => {
     const id = req.params.id;
-    const ret = await ambiente.destroy ({
+    const ret = await turmaComponente.destroy ({
         where : { id : id}
     })
     if(ret == 1){

@@ -28,8 +28,8 @@ class turmaComponente extends Model{
         );
     }
     static associate(models) {
-        turma.belongsTo(models.componete, {foreignKey: 'id'});
-        turma.belongsTo(models.turmas, {foreignKey: 'id'});
+        turmaComponente.belongsTo(models.turma, {foreignKey: 'id_turma'});
+        turmaComponente.belongsTo(models.componente, {foreignKey: 'id_componente'});
     }
 }
 module.exports = turmaComponente;

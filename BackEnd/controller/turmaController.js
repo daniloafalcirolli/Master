@@ -5,7 +5,6 @@ const create = async (req, resp) => {
     let ret = [];
     try {
         console.log(data)
-
         ret = await turma.create(data);
     }catch(err) {
         console.log(err);

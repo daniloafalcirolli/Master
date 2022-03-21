@@ -9,14 +9,14 @@ class tipoAmbiente extends Model{
             },
         },{
             sequelize: datacon,
-            tableName: 'tipo_ambiente',
+            tableName: 'tipo_ambientes',
             modelName: 'tipoAmbiente',
         })
         
     }
 
     static associate(models) {
-        tipoAmbiente.hasMany(models.ambiente, {foreignKey: 'id'});
+        tipoAmbiente.hasMany(models.ambiente, {foreignKey: 'id_tipo'});
     }
 }
 module.exports = tipoAmbiente;

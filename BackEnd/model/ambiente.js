@@ -7,12 +7,12 @@ class ambiente extends Model{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'tipo_ambiente',
+                    model: 'tipo_ambientes',
                     key: 'id',
                 }
             },
             capacidade: {
-                type: DataTypes.INTEGER(75),
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },{
@@ -22,8 +22,7 @@ class ambiente extends Model{
         });
     }
     static associate(models) {
-        ambiente.belongsTo(models.tipoAmbiente, {foreignKey: 'id'});
-        ambiente.hasMany(models.ambiente, {foreignKey: 'id_ambiente'});
+        ambiente.belongsTo(models.tipoAmbiente, {foreignKey: 'id_tipo'});
         ambiente.hasMany(models.agenda, {foreignKey: 'id_agenda'});
     }
 };

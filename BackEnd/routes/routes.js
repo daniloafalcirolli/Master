@@ -8,6 +8,7 @@ const componenteController = require('../controller/componenteController');
 const tipoAmbienteController = require('../controller/tipoAmbienteController');
 const turmaController = require('../controller/turmaController');
 const usuarioController = require('../controller/usuarioController');
+const turmaComponenteController = require('../controller/turmaComponenteController');
 
 //ENDPOINTS AGENDA
 route.get('/agenda', agendaController.read);
@@ -43,6 +44,13 @@ route.get('/turma/:id', turmaController.read);
 route.post('/turma', turmaController.create);
 route.put('/turma/:id', turmaController.update);
 route.delete('/turma/:id', turmaController.remove);
+
+//ENDPOINTS TURMA COMPONETE
+route.get('/turmacomponente', turmaComponenteController.read);
+route.get('/turmacomponente/:id', turmaComponenteController.read);
+route.post('/turmacomponente', turmaComponenteController.create);
+route.put('/turmacomponente/:id', turmaComponenteController.update);
+route.delete('/turmacomponente/:id', turmaComponenteController.remove);
 
 //ENDPOINTS USUARIOS
 route.get('/usuario', usuarioController.read);

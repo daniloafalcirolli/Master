@@ -22,11 +22,14 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
   const sync = () =>{
     componente.init(sequelize);
     tipoAmbiente.init(sequelize);
-    ambiente.init(sequelize);
-    turma.init(sequelize);
     usuario.init(sequelize);
-    agenda.init(sequelize);  
-    turmaComponente.init(sequelize);  
+    turma.init(sequelize);
+    turmaComponente.init(sequelize);
+    ambiente.init(sequelize);
+    agenda.init(sequelize); 
+          
+    
+     
 
     componente.associate(sequelize.models);  
     tipoAmbiente.associate(sequelize.models);
@@ -34,6 +37,7 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     turma.associate(sequelize.models);
     usuario.associate(sequelize.models);  
     agenda.associate(sequelize.models);
+    turmaComponente.associate(sequelize.models);
 
     sequelize.sync({force: true});
   }
