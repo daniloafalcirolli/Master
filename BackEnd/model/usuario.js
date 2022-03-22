@@ -38,7 +38,7 @@ class usuario extends Model{
                 allowNull: false,
             },
             resetsenha: {
-                type: DataTypes.BOOLEAN(50),
+                type: DataTypes.BOOLEAN,
                 allowNull: true,
             },
             carga_horaria: {
