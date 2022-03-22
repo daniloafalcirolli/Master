@@ -5,7 +5,7 @@ const create = async (req, resp) => {
     let ret = [];
    
     try {
-        console.log("DATTTTA" + data.email)
+        console.log("DATTTTA" + data)
 
         ret = await usuario.create(data);
 

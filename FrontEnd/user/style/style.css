@@ -48,13 +48,13 @@ container{
 
 .fields span{
     display: flex;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--p-color);
     width: 20vw;
     justify-content: space-between;
 }
 
 .fields span h2{
-    color: red;
+    color: var(--p-color);
     margin-bottom: 15px;
     text-shadow: 5px 2px 4px rgba(100, 100, 100, .7);
 }
@@ -90,8 +90,8 @@ input{
 }
 
 .filter h2{
-    color: red;
-    border-bottom: 2px solid red;
+    color: var(--p-color);
+    border-bottom: 2px solid var(--p-color);
     text-shadow: 5px 2px 4px rgba(100, 100, 100, .7);
 }
 
@@ -112,24 +112,19 @@ input{
 }
 
 .filter div input{
-    width: auto;
+    padding: 0;
     margin-left: 10px;
     -webkit-appearance: none;
-    border: none;
+    border: 5px solid #fff;
     background-color: #fff;
     width: 20px;
     height: 20px;
     border-radius: 50%;
 }
 
-.filter div input:hover{
-    background-color: rgba(255, 0, 0, .4);
-}
-
 .filter div input:checked{
-    width: 15px;
-    height: 15px;
-    background-color: red;
+    background-color: var(--p-color);
+    border: 5px solid #fff;
 }
 
 .schedule{

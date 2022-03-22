@@ -15,8 +15,8 @@ function registro() {
     let pw1 = document.querySelector("#reg_pw1").value;
     let pw2 = document.querySelector("#reg_pw2").value;
     let pwf = "";
-    let url = 'http://10.87.207.30:3000/usuario';
-    // let url = 'http://localhost:3000/usuario';
+    // let url = 'http://10.87.207.30:3000/usuario';
+    let url = 'http://localhost:3000/usuario';
 
     console.log(nome, cpf, cargo, email, tel, pw1, pw2)
 
@@ -32,6 +32,8 @@ function registro() {
         "senha" : pwf,
         "cpf" : cpf,
         "foto" : img,
+        "formacao" : "Pré Escola",
+        "carga_horaria" : 20,
         "resetsenha" : false
     }
 

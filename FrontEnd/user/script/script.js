@@ -1,6 +1,6 @@
 var id = JSON.parse(localStorage.getItem("user"));
-let url = 'http://10.87.207.30:3000/usuario/' + id;
-// let url = 'http://localhost:3000/usuario/' + id;
+// let url = 'http://10.87.207.30:3000/usuario/' + id;
+let url = 'http://localhost:3000/usuario/' + id;
 
 getInfo()
 
