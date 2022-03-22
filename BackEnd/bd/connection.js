@@ -39,7 +39,7 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     agenda.associate(sequelize.models);
     turmaComponente.associate(sequelize.models);
 
-    sequelize.sync({force: true});
+    sequelize.sync({force: false});
   }
 
   //EXPORTANDO OS METODOS CRIADOS ACIMA
