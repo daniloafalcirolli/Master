@@ -1,4 +1,5 @@
 const ambiente = require ('../model/ambiente');
+const tipoAmbiente = require ('../model/tipoAmbiente');
 
 const create = async (req, resp) => {
     const data = req.body;
@@ -19,6 +20,12 @@ const read = async (req, resp) => {
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
+
+    filtro.include = {model: tipoAmbiente}
+
+    filtro.attributes = {
+        exclude: ["id_tipo"]
+    }
     // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await ambiente.findAll(filtro);
 

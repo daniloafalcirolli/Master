@@ -19,23 +19,31 @@
             
             <div>
                 <div class="filter">
-                    <span><input type="radio" name="filter"><label>Componente</label></span>
-                    <span><input type="radio" name="filter"><label>Ambiente</label></span>
+                    <span><input type="radio" name="filter" id="compo" onclick="componente()"><label>Componente</label></span>
+                    <span><input type="radio" name="filter" id="amb" onclick="ambiente()"><label>Ambiente</label></span>
                 </div>
                 <div class="filter">
-                    <span><input type="radio" name="filter"><label>Turma</label></span>
+                    <span><input type="radio" name="filter" id="turm" onclick="turma()"><label>Turma</label></span>
                 </div>
             </div>
 
             <h1>Registrar</h1>
 
             <div class="campos">
-                <input type="text" id="dado1">
-                <input type="text" id="dado2">
+                <form action="#" method="post">
+                    <input type="text" id="dado1" required>
+                    <select name="select" id="select">
+                        <option disabled value="0" selected><p  class="disable">Tipo do Ambiente</p></option>
+                        <option value="1">Sala</option>
+                        <option value="2">Laboratório</option>
+                        <option value="3">Oficina</option>
+                    </select>
+                    <input type="text" id="dado2" required>
+                </form>
             </div>
 
             <div class="button">
-                <button type="submit" id="btn" class="btn_add" onclick="add()">Adicionar</button>
+                <button type="submit" id="btn" class="btn_add">Adicionar</button>
             </div>
 
         </div>
@@ -43,7 +51,7 @@
         <div class="lista">
 
             <div class="pesquisa">
-                <input type="search" id="busca" placeholder="Buscar por nome ou CPF..." onkeyup="buscar()">
+                <input type="search" id="busca" placeholder="Buscar..." onkeyup="buscar()">
             </div>
 
             <div class="table">
@@ -52,8 +60,9 @@
                         <tr class="user model">
                             <td class="id">1</td>
                             <td class="nome">jose</td>
-                            <td><button id="btn" class="btn_edit" onclick="edit(this)">Editar</button></td>
-                            <td><button id="btn" class="btn_exclude" onclick="exclude(this)">Excluir</button></td>
+                            <td class="misterM" style="display:none"></td>
+                            <td><button id="btn" class="btn_edit">Editar</button></td>
+                            <td><button id="btn" class="btn_exclude">Excluir</button></td>
                         </tr>
                     </tbody>
                 </table>

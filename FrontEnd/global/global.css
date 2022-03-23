@@ -88,3 +88,15 @@ input:focus{
     box-shadow: 3px 3px 7px 0px rgba(0,0,0,0.3);
     cursor: pointer;
 }
+
+select{
+    width: 20vw;
+    font-size: 25px;
+    padding: 15px;
+    margin: 20px 0;
+    border: none;
+    border-bottom: 2px solid var(--p-color);
+    outline: none;
+    color: var(--p-color);
+    font-weight: 700;
+}

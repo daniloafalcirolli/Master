@@ -37,6 +37,7 @@
     appearance: none;
     background-color: var(--p-color);
     border: 2px solid var(--p-color);
+    cursor: pointer;
 }
 
 .filter input:checked{
@@ -46,11 +47,11 @@
 
 .cadastro h1{
     color: var(--p-color);
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--p-color);
     padding: 0 20px;
 }
 
-.campos{
+form{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +60,10 @@
 
 .lista{
     width: 70%;
+}
+
+.model{
+    display: none;
 }
 
 .pesquisa{
@@ -121,4 +126,8 @@ tbody tr:nth-child(even){
 
 #btn{
     font-size: 20px;
+}
+
+select{
+    display: none;
 }

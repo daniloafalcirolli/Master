@@ -8,7 +8,7 @@ class componente extends Model{
                 allowNull: false,
             },
             carga_horaria: {
-                type: DataTypes.FLOAT(7, 5),
+                type: DataTypes.DECIMAL(5, 2),
                 allowNull: false,
             },
         },{
