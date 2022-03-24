@@ -14,6 +14,18 @@
         <img src="../global/img/logo.png" class="logo">
     </header>
 
+    <div class="model modal">
+        <div class="square">
+            <span onclick="closeModal()">
+                <img src="https://cdn-icons-png.flaticon.com/512/106/106830.png" />
+            </span>
+            <div class="checkboxes">
+                <span class="check model"><input type="checkbox" name="compo"><label>Componente</label></span>
+            </div>
+        
+        </div>
+    </div>
+
     <div class="meio">
         <div class="cadastro">
             
@@ -24,6 +36,7 @@
                 </div>
                 <div class="filter">
                     <span><input type="radio" name="filter" id="turm" onclick="turma()"><label>Turma</label></span>
+                    <span><input type="radio" name="filter" id="turma_comp" onclick="turma_componente()"><label>Turma Componente</label></span>
                 </div>
             </div>
 
@@ -38,8 +51,17 @@
                         <option value="2">Laboratório</option>
                         <option value="3">Oficina</option>
                     </select>
-                    <input type="text" id="dado2" required>
+                    <input type="number" id="dado2" required>
                 </form>
+            </div>
+
+            <div class="turma_comp" style="display: none;">
+                <form action="#" method="post">
+                    <select name="select" id="select_turma_comp" style="margin-bottom: 50px;">
+                        <option disabled value="0" selected><p  class="disable">Selecionar Turma</p></option>
+                    </select>
+                </form>
+                <button id="btn" class="btn_modal" onclick="openModal()">Selecionar Matérias</button>
             </div>
 
             <div class="button">
@@ -58,8 +80,8 @@
                 <table cellspacing="0">
                     <tbody class="list">
                         <tr class="user model">
-                            <td class="id">1</td>
-                            <td class="nome">jose</td>
+                            <td class="info1">1</td>
+                            <td class="info2">jose</td>
                             <td class="misterM" style="display:none"></td>
                             <td><button id="btn" class="btn_edit">Editar</button></td>
                             <td><button id="btn" class="btn_exclude">Excluir</button></td>

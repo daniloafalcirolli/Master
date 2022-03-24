@@ -62,10 +62,6 @@ form{
     width: 70%;
 }
 
-.model{
-    display: none;
-}
-
 .pesquisa{
     padding: 50px 50px 70px;
 }
@@ -115,11 +111,11 @@ tbody tr:nth-child(even){
     background-color: #E7E7E7;
 }
 
-.id{
+.info1{
     width: 10%;
 }
 
-.nome{
+.info2{
     width: 60%;
     text-align: left;
 }
@@ -128,6 +124,83 @@ tbody tr:nth-child(even){
     font-size: 20px;
 }
 
-select{
+.select{
     display: none;
+}
+
+.turma_comp{
+    flex-direction: column;
+    justify-content:center;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square{
+    width: 50%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    justify-content: center;
+    
+}
+
+.square>span{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 2%;
+    cursor: pointer;
+}
+
+.square>span>img{
+    width: 30px;
+}
+
+.checkboxes{
+    align-items: flex-start;
+    display: flex;
+    height: 90%;
+    width: 98%;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.checkboxes span{
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.checkboxes input[type=checkbox]{
+    padding: 0;
+    margin: 15px 30px;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 2px solid var(--p-color);
+    cursor: pointer;
+}
+
+.checkboxes input:checked{
+    background-color: #FFF;
+    border: 7px solid var(--p-color);
+}
+
+.model{
+    display: none !important;
 }
