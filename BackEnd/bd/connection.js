@@ -8,7 +8,8 @@ const ambiente = require('../model/ambiente');
 const turma = require('../model/turma');
 const usuario = require('../model/usuario');
 const agenda = require('../model/agenda');
-const turmaComponente = require('../model/turmaComponente');
+const curso = require('../model/curso');
+const cursoComponente = require('../model/cursoComponente');
 
 const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     host: process.env.HOST,
@@ -23,23 +24,22 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     componente.init(sequelize);
     tipoAmbiente.init(sequelize);
     usuario.init(sequelize);
+    ambiente.init(sequelize);    
     turma.init(sequelize);
-    turmaComponente.init(sequelize);
-    ambiente.init(sequelize);
+    curso.init(sequelize);
+    cursoComponente.init(sequelize);
     agenda.init(sequelize); 
-          
-    
-     
-
+  
     componente.associate(sequelize.models);  
     tipoAmbiente.associate(sequelize.models);
     ambiente.associate(sequelize.models);
     turma.associate(sequelize.models);
     usuario.associate(sequelize.models);  
     agenda.associate(sequelize.models);
-    turmaComponente.associate(sequelize.models);
+    //curso.associate(sequelize.models);
+    // cursoComponente.associate(sequelize.models);
 
-    sequelize.sync({force: false});
+    sequelize.sync({force: true});
   }
 
   //EXPORTANDO OS METODOS CRIADOS ACIMA

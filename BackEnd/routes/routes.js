@@ -5,10 +5,11 @@ const route = express.Router();
 const agendaController = require('../controller/agendaController');
 const ambienteController = require('../controller/ambienteController');
 const componenteController = require('../controller/componenteController');
+const cursoComponenteController = require('../controller/cursoComponenteController');
+const cursoController = require('../controller/cursoController');
 const tipoAmbienteController = require('../controller/tipoAmbienteController');
 const turmaController = require('../controller/turmaController');
 const usuarioController = require('../controller/usuarioController');
-const turmaComponenteController = require('../controller/turmaComponenteController');
 
 //ENDPOINTS AGENDA
 route.get('/agenda', agendaController.read);
@@ -31,6 +32,20 @@ route.post('/componente', componenteController.create);
 route.put('/componente/:id', componenteController.update);
 route.delete('/componente/:id', componenteController.remove);
 
+//ENDPOINTS CURSO COMPONETE
+route.get('/cursocomponente', cursoComponenteController.read);
+route.get('/cursocomponente/:id', cursoComponenteController.read);
+route.post('/cursocomponente', cursoComponenteController.create);
+route.put('/cursocomponente/:id', cursoComponenteController.update);
+route.delete('/cursocomponente/:id', cursoComponenteController.remove);
+
+//ENDPOINTS CURSO
+route.get('/curso', cursoController.read);
+route.get('/curso/:id', cursoController.read);
+route.post('/curso', cursoController.create);
+route.put('/curso/:id', cursoController.update);
+route.delete('/curso/:id', cursoController.remove);
+
 //ENDPOINTS TIPO DE AMBIENTE
 route.get('/tipoambiente', tipoAmbienteController.read);
 route.get('/tipoambiente/:id', tipoAmbienteController.read);
@@ -44,13 +59,6 @@ route.get('/turma/:id', turmaController.read);
 route.post('/turma', turmaController.create);
 route.put('/turma/:id', turmaController.update);
 route.delete('/turma/:id', turmaController.remove);
-
-//ENDPOINTS TURMA COMPONETE
-route.get('/turmacomponente', turmaComponenteController.read);
-route.get('/turmacomponente/:id', turmaComponenteController.read);
-route.post('/turmacomponente', turmaComponenteController.create);
-route.put('/turmacomponente/:id', turmaComponenteController.update);
-route.delete('/turmacomponente/:id', turmaComponenteController.remove);
 
 //ENDPOINTS USUARIOS
 route.get('/usuario', usuarioController.read);

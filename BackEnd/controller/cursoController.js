@@ -1,11 +1,10 @@
-const ambiente = require ('../model/ambiente');
-const tipoAmbiente = require ('../model/tipoAmbiente');
+const curso = require ('../model/curso');
 
 const create = async (req, resp) => {
     const data = req.body;
     let ret = [];
     try {
-       ret = await ambiente.create(data);
+       ret = await curso.create(data);
     }catch(err) {
         console.log(err);
         resp.status(400);
@@ -19,13 +18,13 @@ const read = async (req, resp) => {
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
 
-    filtro.include = {model: tipoAmbiente}
+    filtro.include = {model: curso}
 
     filtro.attributes = {
-        exclude: ["id_tipo"]
+        exclude: []
     }
     // FILTRO SEM ID, BUSCA TUDO NO BD
-    const ret = await ambiente.findAll(filtro);
+    const ret = await curso.findAll(filtro);
 
     console.log("TESTE READ", ret)
 
@@ -35,10 +34,10 @@ const read = async (req, resp) => {
 const update = async (req, resp) => {
     const id = req.params.id;
     const data = req.body;
-    let ret = await ambiente.update(data, {
+    let ret = await curso.update(data, {
         where : {id: id},
     });
-    ret = await ambiente.findAll({
+    ret = await curso.findAll({
         where : { id : id}
     })
     resp.json(ret);
@@ -46,7 +45,7 @@ const update = async (req, resp) => {
 
 const remove = async (req, res) => {
     const id = req.params.id;
-    const ret = await ambiente.destroy ({
+    const ret = await curso.destroy ({
         where : { id : id}
     })
     if(ret == 1){

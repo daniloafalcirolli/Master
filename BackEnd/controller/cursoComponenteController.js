@@ -1,12 +1,10 @@
-const turmaComponente = require ('../model/turmaComponente');
+const cursoComponente = require ('../model/cursoComponente');
 
 const create = async (req, resp) => {
     const data = req.body;
     let ret = [];
     try {
-        console.log(data)
-
-        ret = await turmaComponente.create(data);
+       ret = await cursoComponente.create(data);
     }catch(err) {
         console.log(err);
         resp.status(400);
@@ -19,8 +17,14 @@ const read = async (req, resp) => {
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
+
+    filtro.include = {model: cursoComponente}
+
+    filtro.attributes = {
+        exclude: []
+    }
     // FILTRO SEM ID, BUSCA TUDO NO BD
-    const ret = await turmaComponente.findAll(filtro);
+    const ret = await cursoComponente.findAll(filtro);
 
     console.log("TESTE READ", ret)
 
@@ -30,10 +34,10 @@ const read = async (req, resp) => {
 const update = async (req, resp) => {
     const id = req.params.id;
     const data = req.body;
-    let ret = await turmaComponente.update(data, {
+    let ret = await cursoComponente.update(data, {
         where : {id: id},
     });
-    ret = await turma.findAll({
+    ret = await cursoComponente.findAll({
         where : { id : id}
     })
     resp.json(ret);
@@ -41,7 +45,7 @@ const update = async (req, resp) => {
 
 const remove = async (req, res) => {
     const id = req.params.id;
-    const ret = await turmaComponente.destroy ({
+    const ret = await cursoComponente.destroy ({
         where : { id : id}
     })
     if(ret == 1){

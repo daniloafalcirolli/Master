@@ -3,9 +3,13 @@ const { Model, DataTypes } = require('sequelize');
 class turma extends Model{
     static init(datacon) {
         super.init({
-            curso: {
-                type: DataTypes.STRING(100),
+            id_curso: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
+                references: {
+                    model: 'cursos',
+                    foreignKey: 'id'
+                }
             },
             alunos: {
                 type: DataTypes.INTEGER,
@@ -21,7 +25,8 @@ class turma extends Model{
     }
 
     static associate(models) {
-        turma.hasMany(models.turmaComponente, {foreignKey: 'id_turma'});
+      turma.belongsTo(models.curso, {foreignKey: 'id_curso'});
+      turma.belongsTo(models.cursoComponente, {foreignKey: 'id_curso'});
     }
 }
 module.exports = turma;
