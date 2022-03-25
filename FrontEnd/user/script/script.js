@@ -17,7 +17,7 @@ function getInfo() {
         
         avatar.src = data[0].foto;
         user.querySelector("h3").innerHTML = data[0].nome;
-        fields.querySelector("p").innerHTML = data[0].cpf;
+        fields.querySelector(".campo_cpf").value = data[0].cpf;
         fields.querySelector("#user_email").value = data[0].email
         fields.querySelector("#tel").value = data[0].telefone
     }).catch(err =>[
@@ -53,4 +53,11 @@ function update(){
 function sair() {
     localStorage.removeItem("user");
     window.location.href="../login/index.html";
+}
+
+function pwReview(e){
+    let pwe = e.parentNode.querySelector("input");
+    const type = pwe.getAttribute('type') === 'password' ? 'text' : 'password';
+    pwe.setAttribute('type', type);
+    e.classList.toggle('bi-eye');
 }

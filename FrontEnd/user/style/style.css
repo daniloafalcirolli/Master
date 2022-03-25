@@ -59,8 +59,17 @@ container{
     text-shadow: 5px 2px 4px rgba(100, 100, 100, .7);
 }
 
-.fields span p{
-    align-self: flex-end;
+.fields span div{
+    display: flex;
+    align-items: center;
+}
+
+.campo_cpf{
+    width: 10vw;
+    background-color: transparent;
+    border: none !important;
+    margin: 0;
+    padding: 0;
     font-size: 20px;
 }
 

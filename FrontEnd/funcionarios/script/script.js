@@ -3,8 +3,8 @@ var list = document.querySelector(".list");
 load()
 
 function load() {
-    let url = 'http://10.87.207.30:3000/usuario';
-    // let url = 'http://localhost:3000/usuario';
+    // let url = 'http://10.87.207.30:3000/usuario';
+    let url = 'http://localhost:3000/usuario';
 
     fetch(url)
     .then(res => {
@@ -43,7 +43,8 @@ function buscar() {
 
 function reset(e) {
     let id = e.parentNode.parentNode.querySelector(".id").innerHTML;
-    let url = 'http://10.87.207.30:3000/usuario/' + id;
+    // let url = 'http://10.87.207.30:3000/usuario/' + id;
+    let url = 'http://localhost:3000/usuario/' + id;
     
 
     let obj = {
