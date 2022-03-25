@@ -6,9 +6,10 @@ var select = document.getElementById("select");
 var dado2 =  document.getElementById("dado2");
 var campos = document.querySelector(".campos");
 var turma_comp = document.querySelector(".turma_comp");
+var arrayComponente = []
 
 document.querySelector('#compo').click()
-openModal()
+
 function componente() {
     turma_comp.style.display = "none"
     campos.style.display = 'block';
@@ -348,6 +349,12 @@ function exclude(url, id) {
 function openModal() {
     document.querySelector(".modal").classList.remove("model");
 
+    document.querySelectorAll('.check').forEach(e=>{
+        if(!e.classList.contains('model')){
+            e.remove();
+        }
+    });
+
     fetch(url_comp).then(res => {
         console.log(res); 
         return res.json();
@@ -357,6 +364,17 @@ function openModal() {
             let check = document.querySelector(".check").cloneNode(true);
             check.querySelector('label').innerHTML = e.materia;
             check.classList.remove("model");
+            check.addEventListener("change", (e) => {
+                if(check.querySelector("input[type=checkbox]").checked){
+                    arrayComponente.push(check.querySelector("label").innerHTML)
+                }else{
+                    arrayComponente.forEach((e,index)=>{
+                        if(e===check.querySelector("label").innerHTML){
+                            arrayComponente.splice(index, 1)
+                        }
+                    })
+                }
+            })
             document.querySelector(".checkboxes").appendChild(check);
         })
     }).catch(err => {

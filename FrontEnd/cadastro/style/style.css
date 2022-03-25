@@ -152,9 +152,8 @@ tbody tr:nth-child(even){
     border-radius: 20px;
     display: flex;
     position: relative;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
-    
 }
 
 .square>span{
@@ -172,11 +171,27 @@ tbody tr:nth-child(even){
 .checkboxes{
     align-items: flex-start;
     display: flex;
-    height: 90%;
+    max-height: 85%;
     width: 98%;
+    margin-top: 10%;
     margin-bottom: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.checkboxes::-webkit-scrollbar{
+    width: 15px;
+}
+
+.checkboxes::-webkit-scrollbar-track {
+    background: #999;
+    border: 3px solid #fff;
+    border-radius: 6px;
+}
+
+.checkboxes::-webkit-scrollbar-thumb {
+    background: var(--p-color);
+    border-radius: 6px;
 }
 
 .checkboxes span{
