@@ -111,12 +111,16 @@ tbody tr:nth-child(even){
     background-color: #E7E7E7;
 }
 
+.title1{
+    text-align: center;
+}
+
 .info1{
-    width: 10%;
+    width: 20%;
 }
 
 .info2{
-    width: 60%;
+    width: 50%;
     text-align: left;
 }
 
@@ -128,9 +132,13 @@ tbody tr:nth-child(even){
     display: none;
 }
 
-.turma_comp{
+.curso_cad{
     flex-direction: column;
     justify-content:center;
+}
+
+.select_curso{
+    margin-bottom: 0 !important;
 }
 
 .modal{

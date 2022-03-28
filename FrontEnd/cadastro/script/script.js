@@ -2,16 +2,23 @@ var url_comp = 'http://localhost:3000/componente';
 var url_amb = 'http://localhost:3000/ambiente';
 var url_turma = 'http://localhost:3000/turma';
 var dado1 =  document.getElementById("dado1");
-var select = document.getElementById("select");
 var dado2 =  document.getElementById("dado2");
+var dado3 =  document.getElementById("dado3");
+var select = document.getElementById("select");
+var select_curso = document.getElementById("select_curso");
+var btn_modal = document.querySelector(".btn_modal");
 var campos = document.querySelector(".campos");
-var turma_comp = document.querySelector(".turma_comp");
+var curso_cad = document.querySelector(".curso_cad");
+var title1 = document.querySelector(".title1");
+var title2 = document.querySelector(".title2");
 var arrayComponente = []
 
 document.querySelector('#compo').click()
 
 function componente() {
-    turma_comp.style.display = "none"
+    title1.innerHTML = "Componente";
+    title2.innerHTML = "Carga Horaria";
+    curso_cad.style.display = "none"
     campos.style.display = 'block';
     dado1.style.display = "block"
     select.style.display = "none";
@@ -111,7 +118,9 @@ function edit_comp(url, id, materia, carga_horaria) {
 }
 
 function ambiente() {
-    turma_comp.style.display = "none"
+    title1.innerHTML = "Ambiente";
+    title2.innerHTML = "Capacidade";
+    curso_cad.style.display = "none"
     campos.style.display = 'block';
     select.style.display = "block"
     dado1.style.display = "none";
@@ -210,12 +219,14 @@ function edit_amb(url, id, capacidade, tipoAmbiente) {
 }
 
 function turma() {
-    turma_comp.style.display = "none"
-    campos.style.display = 'block';
-    dado1.style.display = "block";
-    select.style.display = "none";
-    dado1.placeholder = "Curso";
-    dado2.placeholder = "Quantidade de Alunos";
+    title1.innerHTML = "Curso";
+    title2.innerHTML = "Alunos";
+    btn_modal.style.display = "none";
+    select_curso.style.display = "block";
+    curso_cad.style.display = "block"
+    campos.style.display = 'none';
+    dado3.innerHTML = "Alunos";
+    dado3.type = "number";
 
     load_turma(url_turma);
 
@@ -306,12 +317,16 @@ function edit_turma(url, id, curso, alunos) {
     }
 }
 
-function turma_componente() {
-    document.getElementById("select_turma_comp").querySelectorAll("option").forEach(e=>{
+function curso() {
+    select_curso.querySelectorAll("option").forEach(e=>{
         if(e.value!=0){e.remove()}
     })
 
-    turma_comp.style.display = "flex"
+    btn_modal.style.display = "block";
+    select_curso.style.display = "none";
+    dado3.type = "text";
+    dado3.placeholder = "Curso";
+    curso_cad.style.display = "flex";
     campos.style.display = 'none';
     fetch(url_turma)
     .then(response => response.json())
@@ -320,7 +335,7 @@ function turma_componente() {
             let tur = document.createElement("option");
             tur.value = e.id;
             tur.innerHTML = e.curso
-            document.getElementById("select_turma_comp").appendChild(tur);
+            select_curso.appendChild(tur);
         })
     });
 }

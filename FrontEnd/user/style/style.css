@@ -73,6 +73,10 @@ container{
     font-size: 20px;
 }
 
+.bi-eye-slash{
+    cursor: pointer;
+}
+
 .fields form{
     display: flex;
     flex-direction: column;

@@ -68,3 +68,7 @@ function reset(e) {
         console.log(err);
     })
 }
+
+function backpg() {
+    window.history.back();
+}

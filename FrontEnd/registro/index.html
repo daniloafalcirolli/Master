@@ -27,7 +27,7 @@
                     <input type="text" placeholder="CPF" id="reg_cpf" oninput="maskCPF(this)" required>
                     <input type="email" placeholder="E-mail" id="reg_email" required>
                     <select name="select" id="reg_cargo">
-                        <option disabled selected><p  class="caraio">Cargo</p></option>
+                        <option disabled selected value="0"><p  class="caraio">Cargo</p></option>
                         <option value="Analista de Qualidade de Vida">Analista de Qualidade de Vida</option>
                         <option value="Assistente de Apoio Técnico">Assistente de Apoio Técnico</option>
                         <option value="Assistente de Serviço Administrativo">Assistente de Serviço Administrativo</option>
@@ -56,6 +56,7 @@
     
         <div class="div_btn">
             <button type="submit" id="btn" onclick="registro()">Registrar</button>
+            <button type="button" id="btn" onclick="backpg()">Voltar</button>
         </div>
     </div>
     
