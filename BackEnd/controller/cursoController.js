@@ -1,33 +1,59 @@
+const res = require('express/lib/response');
 const curso = require ('../model/curso');
+
+const cursoComponente = require ('../model/cursoComponente');
 
 const create = async (req, resp) => {
     const data = req.body;
     let ret = [];
+    let index = 0;
+    let comerro = false;
+
+    console.log(data);
+
+    const transaction = await curso.sequelize.transaction();
+
     try {
-       ret = await curso.create(data);
+        await curso.create({curso:data.curso}, { transaction })
+        .then(async (retCc) => {
+            do {
+                let temp = {
+                    "id_curso": retCc.dataValues.id,
+                    "id_componente": data.id_componente[index]
+                }
+
+                await cursoComponente.create(temp, {transaction})
+                .then((retorno) => {
+                    console.log(retorno);
+                    if(index+1 === data.id_componente.length) {
+                        transaction.commit();
+                        resp.status(200).json(retCc);
+                        comerro = true;
+                    }
+                })
+                .catch(err => {
+                    transaction.rollback();
+                    resp.status(400).json({err});
+                    comerro = true;
+                })
+                index++;
+            }while(!comerro);
+        })
     }catch(err) {
-        console.log(err);
-        resp.status(400);
+        res.status(400).json({err})
     }
-    resp.json(ret);
 }
 
 const read = async (req, resp) => {
+    console.log("TETETETETETEET")
+
     // FILTRO POR ID
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
 
-    filtro.include = {model: curso}
-
-    filtro.attributes = {
-        exclude: []
-    }
-    // FILTRO SEM ID, BUSCA TUDO NO BD
+     // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await curso.findAll(filtro);
-
-    console.log("TESTE READ", ret)
-
     resp.json(ret);
 }
 

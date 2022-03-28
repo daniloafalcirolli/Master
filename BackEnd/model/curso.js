@@ -6,15 +6,7 @@ class curso extends Model{
             curso: {
                 type: DataTypes.STRING(50),
                 allowNull: false,
-            },
-            id_componente: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'componentes',
-                    foreignKey: 'id'
-                }
-            },           
+            },       
         },
         {
             sequelize: datacon,
