@@ -30,9 +30,9 @@ class cursoComponente extends Model{
         }
         );
     }
-    // static associate(models) {
-    //     cursoComponente.belongsTo(models.curso, {foreignKey: 'id_curso'});
-    //     cursoComponente.belongsTo(models.componente, {foreignKey: 'id_componente'});
-    // }
+    static associate(models) {
+        cursoComponente.belongsTo(models.curso, {foreignKey: 'id_curso'});
+        cursoComponente.belongsTo(models.componente, {foreignKey: 'id_componente'});
+    }
 }
 module.exports = cursoComponente;

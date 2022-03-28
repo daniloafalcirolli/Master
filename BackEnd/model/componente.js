@@ -19,6 +19,7 @@ class componente extends Model{
     }
     static associate(models) {
         componente.hasMany(models.cursoComponente, {foreignKey: 'id_componente'});
+        componente.hasMany(models.curso, {foreignKey: 'id_componente'});
     }
 }
 module.exports = componente;

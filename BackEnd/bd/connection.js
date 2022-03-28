@@ -34,12 +34,12 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     tipoAmbiente.associate(sequelize.models);
     ambiente.associate(sequelize.models);
     turma.associate(sequelize.models);
+    curso.associate(sequelize.models);
     usuario.associate(sequelize.models);  
     agenda.associate(sequelize.models);
-    //curso.associate(sequelize.models);
-    // cursoComponente.associate(sequelize.models);
+    cursoComponente.associate(sequelize.models);
 
-    sequelize.sync({force: true});
+    sequelize.sync({force: false});
   }
 
   //EXPORTANDO OS METODOS CRIADOS ACIMA

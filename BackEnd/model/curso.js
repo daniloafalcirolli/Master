@@ -7,7 +7,6 @@ class curso extends Model{
                 type: DataTypes.STRING(50),
                 allowNull: false,
             },
-
             id_componente: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -24,9 +23,10 @@ class curso extends Model{
         }
         );
     }
-    // static associate(models) {
-    //     curso.hasMany(models.cursoComponente, {foreignKey: 'id_curso'});
-    //     curso.belongsTo(models.turma, {foreignKey: 'id_turma'});
-    // }
+    static associate(models) {
+        curso.hasMany(models.cursoComponente, {foreignKey: 'id_curso'});
+        curso.hasMany(models.turma, {foreignKey: 'id_curso'});
+    }
+
 }
 module.exports = curso;

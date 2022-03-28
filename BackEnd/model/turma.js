@@ -25,7 +25,7 @@ class turma extends Model{
     }
 
     static associate(models) {
-      turma.belongsTo(models.curso, {foreignKey: 'id_curso'});
+      turma.belongsTo(models.curso, {foreignKey: 'id'});
       turma.belongsTo(models.cursoComponente, {foreignKey: 'id_curso'});
     }
 }
