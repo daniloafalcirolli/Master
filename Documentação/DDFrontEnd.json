@@ -66,3 +66,99 @@
 {
     "status": 200 || { "msg": "alterado"}
 }
+
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Componente GET
+{
+
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Componente GET
+{
+    id: 1,
+    materia: "FPOO",
+    carga_horaria: 150
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Componente POST
+{
+    materia: "SOP",
+    carga_horaria: 75
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Componente POST
+{
+    id: 3,
+    materia: "SOP",
+    carga_horaria: 75
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Componente PUT
+{
+    Query: "&id=1",
+    materia: "FPOO",
+    carga_horaria: 300
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Componente PUT
+{
+    id: 1,
+    materia: "FPOO",
+    carga_horaria: 300
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Componente Delete
+{
+    Query: "&id=1",
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Componente Delete
+{
+    HTTPStatus: 410
+}
+
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Ambiente GET
+{
+
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Ambiente GET
+{
+    id: 1,
+    capacidade: 30,
+    tipoAmbiente: {
+        id: 1,
+        tipo: "Laboratorio"
+    }
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Ambiente POST
+{
+	id_tipo : 1,
+	capacidade : 30
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Ambiente POST
+{
+	id: 1,
+	id_tipo: 1,
+	capacidade: 30
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Ambiente PUT
+{
+    Query: "&id=1",
+    id_tipo: 2,
+    capacidade: 20
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Ambiente PUT
+{
+    id: 1,
+    id_tipo: 2,
+    capacidade: 20
+}
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) Ambiente Delete
+{
+    Query: "&id=1",
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral ) Ambiente Delete
+{
+    HTTPStatus: 410
+}
+
+// Enviara pelo FrontEnd ( Pagina de CadastroGeral ) 
+{
+
+}
+//Recebera de volta no FrontEnd ( Pagina de CadastroGeral )
+{
+    
+}
