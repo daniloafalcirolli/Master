@@ -2,6 +2,7 @@ const res = require('express/lib/response');
 const curso = require ('../model/curso');
 
 const cursoComponente = require ('../model/cursoComponente');
+const componente = require ('../model/componente');
 
 const create = async (req, resp) => {
     const data = req.body;
@@ -45,13 +46,16 @@ const create = async (req, resp) => {
 }
 
 const read = async (req, resp) => {
-    console.log("TETETETETETEET")
-
-    // FILTRO POR ID
+     // FILTRO POR ID
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
 
+    filtro.include = { model : cursoComponente, include : { model : componente } }
+
+    filtro.attributes = {
+        exclude: ['id_componente']
+    }
      // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await curso.findAll(filtro);
     resp.json(ret);

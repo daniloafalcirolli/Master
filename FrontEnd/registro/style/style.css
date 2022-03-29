@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -50px;
 }
 
 #avatar{
@@ -39,4 +40,13 @@
 
 #avatar:active::before {
     background: rgba(255, 0, 0, 0.4);
+}
+
+.div_btn {
+    flex-direction: column;
+    width: 10vw;
+}
+
+#btn {
+    margin-top: 20px;
 }

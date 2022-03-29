@@ -35,8 +35,8 @@
                     <span><input type="radio" name="filter" id="amb" onclick="ambiente()"><label>Ambiente</label></span>
                 </div>
                 <div class="filter">
+                    <span><input type="radio" name="filter" id="curso" onclick="curso()"><label>Curso</label></span>
                     <span><input type="radio" name="filter" id="turm" onclick="turma()"><label>Turma</label></span>
-                    <span><input type="radio" name="filter" id="turma_comp" onclick="turma_componente()"><label>Turma Componente</label></span>
                 </div>
             </div>
 
@@ -55,11 +55,12 @@
                 </form>
             </div>
 
-            <div class="turma_comp" style="display: none;">
+            <div class="curso_cad" style="display: none;">
                 <form action="#" method="post">
-                    <select name="select" id="select_turma_comp" style="margin-bottom: 50px;">
-                        <option disabled value="0" selected><p  class="disable">Selecionar Turma</p></option>
-                    </select>
+                <select name="select" id="select_curso" style="margin-bottom: 50px;">
+                    <option disabled value="0" selected><p  class="disable">Selecionar Curso</p></option>
+                </select>
+                    <input type="text" id="dado3" required>
                 </form>
                 <button id="btn" class="btn_modal" onclick="openModal()">Selecionar Matérias</button>
             </div>
@@ -78,10 +79,16 @@
 
             <div class="table">
                 <table cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="title1"></th>
+                            <th class="title2"></th>
+                        </tr>
+                    </thead>
                     <tbody class="list">
                         <tr class="user model">
-                            <td class="info1">1</td>
-                            <td class="info2">jose</td>
+                            <td class="info1"></td>
+                            <td class="info2"></td>
                             <td class="misterM" style="display:none"></td>
                             <td><button id="btn" class="btn_edit">Editar</button></td>
                             <td><button id="btn" class="btn_exclude">Excluir</button></td>
