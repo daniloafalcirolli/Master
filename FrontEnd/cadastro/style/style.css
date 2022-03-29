@@ -68,7 +68,7 @@ form{
 
 .table{
     height: 69.2vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     align-self: center;
 }
 
@@ -109,6 +109,11 @@ tbody tr:nth-child(odd){
 
 tbody tr:nth-child(even){
     background-color: #E7E7E7;
+}
+
+table th{
+    padding: 10px 0;
+    border-top: 2px solid var(--p-color);
 }
 
 .title1{

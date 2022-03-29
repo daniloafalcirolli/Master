@@ -1,6 +1,7 @@
 var url_comp = 'http://localhost:3000/componente';
 var url_amb = 'http://localhost:3000/ambiente';
 var url_turma = 'http://localhost:3000/turma';
+var url_curso = 'http://localhost:3000/curso';
 var dado1 =  document.getElementById("dado1");
 var dado2 =  document.getElementById("dado2");
 var dado3 =  document.getElementById("dado3");
@@ -225,17 +226,32 @@ function turma() {
     select_curso.style.display = "block";
     curso_cad.style.display = "block"
     campos.style.display = 'none';
-    dado3.innerHTML = "Alunos";
+    dado3.placeholder = "Alunos";
     dado3.type = "number";
+
+    select_curso.querySelectorAll("option").forEach(e=>{
+        if(e.value!=0){e.remove()}
+    })
+    
+    fetch(url_curso)
+    .then(response => response.json())
+    .then(resp => {
+        resp.forEach(e=>{
+            let tur = document.createElement("option");
+            tur.value = e.id;
+            tur.innerHTML = e.curso
+            select_curso.appendChild(tur);
+        })
+    });
 
     load_turma(url_turma);
 
     document.querySelector(".btn_add").onclick = () => {
         let obj = {
-            "curso" : dado1.value,
-            "alunos" : dado2.value
+            "id_curso" : select_curso.value,
+            "alunos" : dado3.value
         }
-
+        
         fetch(url_turma, {
             method: "POST",
             headers: {
@@ -248,8 +264,7 @@ function turma() {
         }).then(data => {
             console.log(data);
             load_turma(url_turma);
-            dado1.value = "";
-            dado2.value = "";
+            dado3.value = "";
         }).catch(err => {
             console.log(err);
         })
@@ -270,17 +285,18 @@ function load_turma(conf) {
         return res.json();
     }).then(data => {
         data.forEach((e) => {
-            let model = document.querySelector(".user").cloneNode(true);
-            model.querySelector('.info1').innerHTML = e.curso;
-            model.querySelector('.info2').innerHTML = e.alunos;
-            model.querySelector(".btn_edit").addEventListener('click', ()=> {
-                edit_turma(url, e.id, e.curso, e.alunos)
-            })
-            model.querySelector(".btn_exclude").addEventListener('click', ()=> {
-                exclude(url, e.id)
-            })
-            model.classList.remove("model");
-            document.querySelector(".list").appendChild(model);
+            console.log(data)
+            // let model = document.querySelector(".user").cloneNode(true);
+            // model.querySelector('.info1').innerHTML = e.curso;
+            // model.querySelector('.info2').innerHTML = e.alunos;
+            // model.querySelector(".btn_edit").addEventListener('click', ()=> {
+            //     edit_turma(url, e.id, e.curso, e.alunos)
+            // })
+            // model.querySelector(".btn_exclude").addEventListener('click', ()=> {
+            //     exclude(url, e.id)
+            // })
+            // model.classList.remove("model");
+            // document.querySelector(".list").appendChild(model);
         })
     }).catch(err => {
         console.log(err);
@@ -318,26 +334,68 @@ function edit_turma(url, id, curso, alunos) {
 }
 
 function curso() {
-    select_curso.querySelectorAll("option").forEach(e=>{
-        if(e.value!=0){e.remove()}
-    })
-
+    title1.innerHTML = "Curso";
+    title2.innerHTML = "";
     btn_modal.style.display = "block";
     select_curso.style.display = "none";
     dado3.type = "text";
     dado3.placeholder = "Curso";
     curso_cad.style.display = "flex";
     campos.style.display = 'none';
-    fetch(url_turma)
-    .then(response => response.json())
-    .then(resp => {
-        resp.forEach(e=>{
-            let tur = document.createElement("option");
-            tur.value = e.id;
-            tur.innerHTML = e.curso
-            select_curso.appendChild(tur);
+
+    load_curso(url_curso);
+
+    document.querySelector(".btn_add").onclick = () => {
+        let obj = {
+            "curso" : dado3.value,
+            "id_componente" : arrayComponente
+        }
+        console.log(obj);
+        fetch(url_curso, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj),
+        }).then(res => {
+            console.log(res); 
+            return res.json();
+        }).then(data => {
+            console.log(data);
+            load_curso(url_curso);
+            dado3.value = "";
+        }).catch(err => {
+            console.log(err);
         })
+    }
+}
+
+function load_curso(conf) {
+    document.querySelectorAll('.user').forEach(e=>{
+        if(!e.classList.contains('model')){
+            e.remove();
+        }
     });
+
+    let url = conf;
+    fetch(url).then(res => {
+        console.log(res); 
+        return res.json();
+    }).then(data => {
+        data.forEach((e) => {
+            let model = document.querySelector(".user").cloneNode(true);
+            model.querySelector('.info1').innerHTML = e.curso ;
+            model.querySelector('.info2').innerHTML = "";
+            model.querySelector(".btn_edit").style.display = 'none';
+            model.querySelector(".btn_exclude").addEventListener('click', ()=> {
+                exclude(url, e.id)
+            })
+            model.classList.remove("model");
+            document.querySelector(".list").appendChild(model);
+        })
+    }).catch(err => {
+        console.log(err);
+    })
 }
 
 function exclude(url, id) {
@@ -362,29 +420,34 @@ function exclude(url, id) {
 }
 
 function openModal() {
+    console.log(arrayComponente)
     document.querySelector(".modal").classList.remove("model");
-
+    
     document.querySelectorAll('.check').forEach(e=>{
         if(!e.classList.contains('model')){
             e.remove();
         }
     });
-
+    
     fetch(url_comp).then(res => {
         console.log(res); 
         return res.json();
     }).then(data => {
         console.log(data)
         data.forEach((e) => {
+            console.log(e)
             let check = document.querySelector(".check").cloneNode(true);
+            if(arrayComponente.includes(e.id+'')) check.querySelector("input[type=checkbox]").checked = true
+            check.querySelector("input[type=checkbox]").value = e.id;
             check.querySelector('label').innerHTML = e.materia;
             check.classList.remove("model");
             check.addEventListener("change", (e) => {
                 if(check.querySelector("input[type=checkbox]").checked){
-                    arrayComponente.push(check.querySelector("label").innerHTML)
+                    console.log(check.querySelector("input[type=checkbox]").value)
+                    arrayComponente.push(check.querySelector("input[type=checkbox]").value)
                 }else{
                     arrayComponente.forEach((e,index)=>{
-                        if(e===check.querySelector("label").innerHTML){
+                        if(e===check.querySelector("input[type=checkbox]").value){
                             arrayComponente.splice(index, 1)
                         }
                     })
