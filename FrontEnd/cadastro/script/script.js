@@ -469,3 +469,19 @@ document.querySelector("select").addEventListener("focus", () => {
     document.querySelector("select").style.color = "black";
     document.querySelector("select").style.fontWeight = "500";
 })
+
+function buscar() {
+    let val = document.querySelector("#busca").value.toLowerCase();
+
+    let rows = document.querySelectorAll("tr");
+    
+
+    for(let i = 1; i < rows.length; i++){
+        console.log(rows[i].innerHTML)
+        if (rows[i].innerHTML.toLowerCase().includes(val)){
+            rows[i].style.display = "table-row";
+        }else{
+            rows[i].style.display = "none";
+        }
+    }
+}

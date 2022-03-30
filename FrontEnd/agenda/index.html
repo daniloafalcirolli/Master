@@ -20,14 +20,14 @@
 
             <div class="inputs">
                 <form action="#" method="post">
-                    <select name="select1" id="curso">
+                    <select name="curso" id="select1">
                         <option disabled selected value="0"><p>Curso</p></option>
                     </select>
-                    <select name="select2" id="sala">
+                    <select name="sala" id="select2">
                         <option disabled selected value="0"><p>Sala</p></option>
                     </select>
-                    <input type="date" id="dataIni">
-                    <input type="date" id="dataFinal">
+                    <input placeholder="Data Inicial" type="text" id="dataInicial" oninput="maskDate(this)">
+                    <input placeholder="Data Final" type="text" id="dataFinal">
                 </form>
             </div>
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="div_btn">
-        <button type="button" id="btn" onclick="">Gerar aquivo XML</button>
+        <button type="button" id="btn" onclick="test()">Gerar aquivo CSV</button>
     </div>
     
     
