@@ -1,5 +1,12 @@
 const agenda = require ('../model/agenda');
 
+const ambiente = require ('../model/ambiente');
+const turma = require ('../model/turma');
+const usuario = require ('../model/usuario');
+const curso = require ('../model/curso');
+const cursoComponente = require ('../model/cursoComponente');
+const componente = require ('../model/componente');
+
 const create = async (req, resp) => {
     const data = req.body;
     let ret = [];
@@ -19,6 +26,13 @@ const read = async (req, resp) => {
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
+
+    filtro.include = [
+        {model : ambiente},
+        {model : turma, include: { model : curso, include: { model: cursoComponente, include: { model: componente }} }},
+        {model : usuario, attributes: {exclude: ['foto']}},
+    ]
+
     // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await agenda.findAll(filtro);
 

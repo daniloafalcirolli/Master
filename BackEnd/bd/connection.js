@@ -42,8 +42,16 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER,"", {
     sequelize.sync({force: false});
   }
 
+  const populate = async () => {
+    await sequelize.query("INSERT INTO componentes VALUES (DEFAULT, 'FPOO', 45)");
+    await sequelize.query("INSERT INTO componentes VALUES (DEFAULT, 'HARE', 45)");
+    await sequelize.query("INSERT INTO componentes VALUES (DEFAULT, 'LIMA', 45)");
+    await sequelize.query("INSERT INTO componentes VALUES (DEFAULT, 'SOP', 45)");
+  }
+
   //EXPORTANDO OS METODOS CRIADOS ACIMA
   module.exports = {
     sequelize,
-    sync
+    sync,
+    populate
   }

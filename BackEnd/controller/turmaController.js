@@ -1,10 +1,12 @@
 const turma = require ('../model/turma');
+const curso = require ('../model/curso');
 
 const create = async (req, resp) => {
     const data = req.body;
     let ret = [];
     try {
-        console.log(data)
+        console.log("aquiii", data)
+
         ret = await turma.create(data);
     }catch(err) {
         console.log(err);
@@ -18,11 +20,10 @@ const read = async (req, resp) => {
     let filtro = {};
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
+    filtro.include = { model : curso }
     // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await turma.findAll(filtro);
-
-    console.log("TESTE READ", ret)
-
+   
     resp.json(ret);
 }
 

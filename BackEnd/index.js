@@ -16,7 +16,8 @@ app.use(Express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 app.use(route);
 
 //UTILIZANDO O METODO
-app.listen(process.env.APP_PORT, ()=>{
+app.listen(process.env.APP_PORT, async ()=>{
     console.log("Servidor ON na porta", process.env.APP_PORT);
     Connection.sync();
+    //Connection.populate();
 })
