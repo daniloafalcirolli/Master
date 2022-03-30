@@ -14,7 +14,7 @@ body{
 .table{
     width: 98%;
     height: 45vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     align-self: center;
 }
 

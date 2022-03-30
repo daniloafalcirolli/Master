@@ -18,16 +18,12 @@ const read = async (req, resp) => {
     let id = req.params.id;
     if(id != undefined) filtro = { where : {id:id}};
 
-    filtro.include = {model: cursoComponente}
-
     filtro.attributes = {
         exclude: []
     }
+
     // FILTRO SEM ID, BUSCA TUDO NO BD
     const ret = await cursoComponente.findAll(filtro);
-
-    console.log("TESTE READ", ret)
-
     resp.json(ret);
 }
 

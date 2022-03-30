@@ -20,51 +20,65 @@ function registro() {
 
     console.log(nome, cpf, cargo, email, tel, pw1, pw2)
 
-    if(pw1 == pw2){
-        pwf = md5(pw1);
-    
-        let obj = {
-            "nome" : nome,
-            "telefone" : tel,
-            "cargo" : cargo,
-            "email" : email,
-            "senha" : pwf,
-            "cpf" : cpf,
-            "foto" : img,
-            "formacao" : "Pré Escola",
-            "carga_horaria" : 20,
-            "resetsenha" : false
-        }
-
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(obj),
-        }).then(res => {
-            console.log(res); 
-            return res.json();
-        }).then(data => {
-            console.log(data);
-
-        }).catch(err => {
-            console.log(err);
-        })
-        
-        alert("Usuario cadastrado com sucesso!")
-
-        document.querySelector("#reg_nome").value = "";
-        document.querySelector("#reg_cpf").value = "";
-        document.querySelector("#reg_email").value = "";
-        document.querySelector("#reg_cargo").value = 0;
-        document.querySelector("#tel").value = "";
-        document.querySelector("#reg_pw1").value = "";
-        document.querySelector("#reg_pw2").value = "";
-        document.querySelector("#avatar").value = "";
-        document.querySelector("#avatar").dataset.content = "Selecione a foto";
+    if(document.querySelector("#reg_nome").value == "" ||
+    document.querySelector("#reg_cpf").value == "" ||
+    document.querySelector("#reg_email").value == "" ||
+    document.querySelector("#reg_cargo").value == 0 ||
+    document.querySelector("#tel").value == ""||
+    document.querySelector("#reg_pw1").value=="" ||
+    document.querySelector("#reg_pw2").value == ""){
+        alert("algum campo está vazio")
     }else{
-        alert("As senhas não são iguais!");
+        if(pw1 == pw2){
+            if(pw1.length <= 7){
+                alert("Coloque uma senha com no minimo 8 characters")
+            }else{
+                pwf = md5(pw1);
+        
+                let obj = {
+                    "nome" : nome,
+                    "telefone" : tel,
+                    "cargo" : cargo,
+                    "email" : email,
+                    "senha" : pwf,
+                    "cpf" : cpf,
+                    "foto" : img,
+                    "formacao" : "Pré Escola",
+                    "carga_horaria" : 20,
+                    "resetsenha" : false
+                }
+    
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(obj),
+                }).then(res => {
+                    console.log(res); 
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+    
+                }).catch(err => {
+                    console.log(err);
+                })
+                
+                alert("Usuario cadastrado com sucesso!")
+    
+                document.querySelector("#reg_nome").value = "";
+                document.querySelector("#reg_cpf").value = "";
+                document.querySelector("#reg_email").value = "";
+                document.querySelector("#reg_cargo").value = 0;
+                document.querySelector("#tel").value = "";
+                document.querySelector("#reg_pw1").value = "";
+                document.querySelector("#reg_pw2").value = "";
+                document.querySelector("#avatar").value = "";
+                document.querySelector("#avatar").dataset.content = "Selecione a foto";
+            }
+        }else{
+            alert("As senhas não são iguais!");
+        }
     }
 }
 
@@ -88,5 +102,5 @@ function init(){
 }
 
 function backpg(){
-    window. history.back()
+    window.history.back()
 }
