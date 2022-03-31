@@ -65,7 +65,7 @@
     font-size: 20px;
 }
 
-.checkboxes input[type=checkbox]{
+.checkboxes input{
     padding: 0;
     margin: 15px 30px;
     width: 20px;
@@ -82,4 +82,8 @@
 
 .model{
     display: none !important;
+}
+
+#btn{
+    margin: 0 15px;
 }

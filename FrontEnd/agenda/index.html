@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="../global/img/Sem título.png" type="image/x-icon">
-    <title>Login</title>
+    <title>Agenda</title>
 </head>
 <body>
 
@@ -21,8 +21,8 @@
 
             <div class="inputs">
                 <form action="#" method="post">
-                    <select name="curso" id="select1">
-                        <option disabled selected value="0"><p>Curso</p></option>
+                    <select name="turma" id="select1">
+                        <option disabled selected value="0"><p>Turma</p></option>
                     </select>
                     <select name="sala" id="select2">
                         <option disabled selected value="0"><p>Sala</p></option>
@@ -34,7 +34,7 @@
 
             <div class="lista">
                 <div class="checkboxes">
-                    <span class="check model"><input type="checkbox" name="compo"><label>Componente</label></span>
+                    <span class="check model"><input type="radio" name="compo"><label>Componente</label></span>
                     
                 </div>
             </div>
@@ -44,7 +44,8 @@
     </div>
 
     <div class="div_btn">
-        <button type="button" id="btn" onclick="test()">Gerar aquivo CSV</button>
+        <button type="button" id="btn" onclick="test()">Cadastrar turma</button>
+        <button type="button" id="btn" onclick="getDados()" class="csv" style="display: block">Gerar aquivo CSV</button>
     </div>
     
     

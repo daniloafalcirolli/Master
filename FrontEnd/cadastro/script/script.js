@@ -472,12 +472,9 @@ document.querySelector("select").addEventListener("focus", () => {
 
 function buscar() {
     let val = document.querySelector("#busca").value.toLowerCase();
-
     let rows = document.querySelectorAll("tr");
     
-
     for(let i = 1; i < rows.length; i++){
-        console.log(rows[i].innerHTML)
         if (rows[i].innerHTML.toLowerCase().includes(val)){
             rows[i].style.display = "table-row";
         }else{
