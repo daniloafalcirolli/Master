@@ -7,17 +7,16 @@ var dataIni = "";
 var dataFinal = "";
 var docente = "";
 var arrayDocentes = [];
+var curso = "";
 var capacidade = "";
 var alunos = "";
+var prof = "";
 var componentes = [];
-var aulas_des = [
-    ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"],
-    [],
-    [],
-    [],
-    [],
-    [],
-];
+var matriz = new Array(5);
+var teste = [];
+var csv_linha = "";
+var csv = "";
+var hora_entrada = 7.5
 
 load_turma()
 load_sala()
@@ -173,6 +172,8 @@ function getDados(id)  {
     fetch(url_agenda + '/' + 1)
     .then(resp => resp.json())
     .then(data => {
+        curso = data[0].turma.curso.curso;
+        prof = data[0].usuario.nome;
         capacidade = data[0].ambiente.capacidade;
         alunos = data[0].turma.alunos;
         data[0].turma.curso.cursoComponentes.forEach(e =>{
@@ -186,17 +187,59 @@ function getDados(id)  {
 }
 
 function calculos(){
-    let horaAula = 45;
+    let horaAula = 0.75;
     let cargaH = 25;
-    
 
     componentes.forEach(e=>{
-        console.log(e)
         cargaH = cargaH + parseInt(e.carga_horaria)
-        e.aula_semana = 10
-        console.log(e)
+        e.aula_semana = (parseInt(e.carga_horaria) / horaAula ) / 20; //20 = semanas no semestre
+        for(let i = 0; i < e.aula_semana; i++){
+            teste.push(e.materia)
+        }
+        
     })
+    console.log(teste)
+    let a = ["7:30","8:15","9:00","9:15","10:00","10:45"];
 
-    console.log(cargaH)
+    csv_linha = ';SEG;TER;QUA;QUI;SEX;\r\n'
 
+    for(let i = 0; i < 6; i++){
+        csv_linha += a[i]+";";
+        if(i==2){
+            csv_linha += "INTERVALO;INTERVALO;INTERVALO;INTERVALO;INTERVALO;"
+        }else{
+            if(i==5){
+                console.log(i)
+                for(let j = (i-1); j < teste.length; j+=5){
+                    csv_linha += teste[j] + ';';
+                }
+            }else{
+                for(let j = i; j < teste.length; j+=5){
+                    csv_linha += teste[j] + ';';
+                }
+            }
+        }
+        csv += csv_linha + '\r\n';
+        csv_linha = "";
+    }
+
+    csv_linha += ';'
+    for(let j = 0; j < 5; j++){
+        csv_linha += prof + ';';
+    }
+
+    csv += csv_linha + '\r\n';
+    csv_linha = "";
+
+    console.log(csv)
+
+    function download() {
+        var element = document.createElement('a');
+        element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(csv));
+        element.setAttribute('download', curso + ".csv");
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+  }
+  download()
 }
