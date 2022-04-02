@@ -16,7 +16,7 @@ export default function AppUsages({navigation, route}){
         <Tab.Navigator barStyle={{ backgroundColor: '#FFF' }} activeColor="#F00" >
             <Tab.Screen name="Usuario" component={UserPage} initialParams={route.params} options={{tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="account" color={color} size={26} />), headerShown:false}}></Tab.Screen>
             {
-                (route.params.cargo == "Administrador")? pages.map(e=>{return(e)}) : null
+                (route.params.cargo == "Diretor de Unidade de Formação Profissional")? pages.map(e=>{return(e)}) : null
             }
         </Tab.Navigator> 
     );

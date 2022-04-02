@@ -67,7 +67,7 @@ export default function Registro({ navigator }){
                 body: JSON.stringify(reg),
             }
             async function post() {
-                let info = await fetch("http://10.87.207.30:3000/usuario ", settings);
+                let info = await fetch("http://192.168.0.102:3000/usuario ", settings);
                 let resp = await info.json();
                 return resp;
             }
@@ -78,7 +78,6 @@ export default function Registro({ navigator }){
                         setMSG({text: "", style: Style.msgOff});
                     },4000);
                 }else{
-                    
                     setCPF("");
                     setNome("");
                     setEmail("");

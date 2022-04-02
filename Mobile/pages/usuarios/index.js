@@ -17,7 +17,7 @@ export default function Usuarios({ navigation }) {
                 },
                 body: JSON.stringify({senha: "25f9e794323b453885f5181f1b624d0b", resetsenha: true})
             }
-            let item = await fetch(`http://10.87.207.30:3000/usuario/${id}`, settings);
+            let item = await fetch(`http://192.168.0.102:3000/usuario/${id}`, settings);
             let resp = await item.json();
             return resp;
         }
@@ -44,7 +44,7 @@ export default function Usuarios({ navigation }) {
 
     function getUsuarios(){
         async function get(){
-            let item = await fetch("http://10.87.207.30:3000/usuario");
+            let item = await fetch("http://192.168.0.102:3000/usuario");
             let resp = await item.json();
             return resp;
         }

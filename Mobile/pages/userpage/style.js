@@ -35,6 +35,14 @@ export default StyleSheet.create({
         alignSelf: "center",
         marginBottom: 30,
     },
+    cpfView:{
+        paddingLeft: 10,
+        paddingRight: 10,
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        flexDirection: "row",
+    },
     cpfText:{
         fontSize: 20,
         color: "#F00",

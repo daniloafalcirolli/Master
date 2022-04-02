@@ -31,7 +31,7 @@ export default function Login({navigation}){
             body: JSON.stringify(json),
         }
         async function post() {
-            let info = await fetch("http://10.87.207.30:3000/loginmobile", settings);
+            let info = await fetch("http://192.168.0.102:3000/loginmobile", settings);
             let resp = await info.json();
             return resp;
         }

@@ -26,7 +26,7 @@ export default function ResetSenha({navigation, route}){
                     },
                     body: JSON.stringify({senha: md5(getSenha), resetsenha: false})
                 }
-                let item = await fetch(`http://10.87.207.30:3000/usuario/${id}`, settings);
+                let item = await fetch(`http://192.168.0.102:3000/usuario/${id}`, settings);
                 let resp = await item.json();
                 return resp;
             }
