@@ -1,8 +1,8 @@
 var id = JSON.parse(localStorage.getItem("user"));
-// let url = 'http://10.87.207.30:3000/usuario/' + id;
 let url = 'http://localhost:3000/usuario/' + id;
 var btn_new_user = document.querySelector(".btn_new_user");
 var btn_resetPw = document.querySelector(".btn_resetPw");
+var btn_agenda = document.querySelector(".btn_agenda");
 
 getInfo()
 
@@ -26,9 +26,11 @@ function getInfo() {
         if(data[0].cargo == "Coordenador de Atividades Técnicas" || data[0].cargo == "Diretor de Unidade de Formação Profissional" || data[0].cargo == "Orientador de Prática Profissional"){
             btn_new_user.style.display = "block";
             btn_resetPw.style.display = "block";
+            btn_agenda.style.display = "block";
         }else{
             btn_new_user.style.display = "none";
             btn_resetPw.style.display = "none";
+            btn_agenda.style.display = "none";
         }
     }).catch(err =>[
         console.log(err)
@@ -63,6 +65,10 @@ function update(){
 function sair() {
     localStorage.removeItem("user");
     window.location.href="../login/index.html";
+}
+
+function agenda() {
+    window.location.href="../agenda/index.html";
 }
 
 function funcionarios() {

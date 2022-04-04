@@ -2,6 +2,8 @@ var url_docente = 'http://localhost:3000/usuario/';
 var url_curso = 'http://localhost:3000/curso';
 var url_ambiente = 'http://localhost:3000/ambiente';
 var url_agenda = 'http://localhost:3000/agenda';
+var select1 = document.querySelector('#select1');
+var select2 = document.querySelector('#select2');
 var data = "";
 var dataIni = "";
 var dataFinal = "";
@@ -23,7 +25,6 @@ load_sala()
 load_docentes()
 
 function load_turma() {
-    var select1 = document.querySelector('#select1');
     select1.querySelectorAll("option").forEach(e=>{
         if(e.value!=0){e.remove()}
     })
@@ -43,7 +44,6 @@ function load_turma() {
 }
 
 function load_sala() {
-    var select2 = document.querySelector('#select2');
     select2.querySelectorAll("option").forEach(e=>{
         if(e.value!=0){e.remove()}
     })
@@ -168,8 +168,7 @@ function test(){
 }
 
 function getDados(id)  {
-
-    fetch(url_agenda + '/' + 1)
+    fetch(url_agenda + '/' + id)
     .then(resp => resp.json())
     .then(data => {
         curso = data[0].turma.curso.curso;
@@ -242,4 +241,17 @@ function calculos(){
         document.body.removeChild(element);
   }
   download()
+};
+
+function limparCampos() {
+    select1.value = 0;
+    select2.value = 0;
+    document.getElementById('dataInicial').value = '';
+    document.getElementById('dataFinal').value = '';
+    document.querySelector(".csv").style.display = "none";
+}
+
+
+function backpg() {
+    window.history.back();
 }

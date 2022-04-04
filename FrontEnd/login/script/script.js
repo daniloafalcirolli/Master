@@ -15,7 +15,6 @@ function maskCPF(i){
  function login() {
     let cpf = document.querySelector("#log_cpf").value;
     let pw = md5(document.querySelector("#log_senha").value);
-    // let url = 'http://10.87.207.30:3000/login';
     let url = 'http://localhost:3000/login';
 
     let data = {

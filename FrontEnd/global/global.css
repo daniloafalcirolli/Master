@@ -34,7 +34,6 @@ header{
     height: 30vh;
     color: var(--p-color);
     font-size: 40px;
-    text-shadow: 4px 1px 7px rgba(100, 100, 100, .5);
 }
 
 .form{
@@ -93,6 +92,11 @@ input:focus{
     border: none;
     box-shadow: 3px 3px 7px 0px rgba(0,0,0,0.3);
     cursor: pointer;
+}
+
+#btn:active{
+    background-color: rgb(199, 0, 0);
+    transform: translateY(2px);
 }
 
 select{

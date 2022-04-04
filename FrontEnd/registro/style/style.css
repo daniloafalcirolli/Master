@@ -34,8 +34,7 @@
 #avatar:hover::before {
     transition: .4s;
     background: var(--p-color);
-    color: #fff
-
+    color: #fff;
 }
 
 #avatar:active::before {

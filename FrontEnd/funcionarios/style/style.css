@@ -76,3 +76,8 @@ tbody tr:nth-child(even){
     cursor: pointer;
     box-shadow: 3px 3px 7px 0px rgba(0,0,0,0.3);
 }
+
+.btn_reset:active{
+    background-color: rgb(199, 0, 0);
+    transform: translateY(2px);
+}

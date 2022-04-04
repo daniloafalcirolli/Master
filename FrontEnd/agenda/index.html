@@ -22,10 +22,10 @@
             <div class="inputs">
                 <form action="#" method="post">
                     <select name="turma" id="select1">
-                        <option disabled selected value="0"><p>Turma</p></option>
+                        <option disabled selected value="0"><p>Curso</p></option>
                     </select>
                     <select name="sala" id="select2">
-                        <option disabled selected value="0"><p>Sala</p></option>
+                        <option disabled selected value="0"><p>Ambiente</p></option>
                     </select>
                     <input placeholder="Data Inicial" type="text" id="dataInicial" oninput="maskDate(this)">
                     <input placeholder="Data Final" type="text" id="dataFinal">
@@ -45,7 +45,8 @@
 
     <div class="div_btn">
         <button type="button" id="btn" onclick="test()">Cadastrar turma</button>
-        <button type="button" id="btn" onclick="getDados()" class="csv" style="display: block">Gerar aquivo CSV</button>
+        <button type="button" id="btn" onclick="limparCampos()" class="csv" style="display: none">Limpar Campos</button>
+        <button type="button" id="btn" onclick="backpg()">Voltar</button>
     </div>
     
     

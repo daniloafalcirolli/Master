@@ -56,7 +56,6 @@ container{
 .fields span h2{
     color: var(--p-color);
     margin-bottom: 15px;
-    text-shadow: 5px 2px 4px rgba(100, 100, 100, .7);
 }
 
 .fields span div{
@@ -90,9 +89,21 @@ input{
     width: 20vw;
 }
 
+.top_btns{
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
+}
+
+.top_btns button{
+    width: 9vw !important; 
+}
+
 .bottom_btns{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    height: 240px;
 }
 
 .filter{
@@ -105,7 +116,6 @@ input{
 .filter h2{
     color: var(--p-color);
     border-bottom: 2px solid var(--p-color);
-    text-shadow: 5px 2px 4px rgba(100, 100, 100, .7);
 }
 
 .filter div{
@@ -133,6 +143,7 @@ input{
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .filter div input:checked{

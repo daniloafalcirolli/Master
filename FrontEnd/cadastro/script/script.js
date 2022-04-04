@@ -286,17 +286,17 @@ function load_turma(conf) {
     }).then(data => {
         data.forEach((e) => {
             console.log(data)
-            // let model = document.querySelector(".user").cloneNode(true);
-            // model.querySelector('.info1').innerHTML = e.curso;
-            // model.querySelector('.info2').innerHTML = e.alunos;
-            // model.querySelector(".btn_edit").addEventListener('click', ()=> {
-            //     edit_turma(url, e.id, e.curso, e.alunos)
-            // })
-            // model.querySelector(".btn_exclude").addEventListener('click', ()=> {
-            //     exclude(url, e.id)
-            // })
-            // model.classList.remove("model");
-            // document.querySelector(".list").appendChild(model);
+            let model = document.querySelector(".user").cloneNode(true);
+            model.querySelector('.info1').innerHTML = e.curso.curso;
+            model.querySelector('.info2').innerHTML = e.alunos;
+            model.querySelector(".btn_edit").addEventListener('click', ()=> {
+                edit_turma(url, e.id, e.curso.id, e.alunos)
+            })
+            model.querySelector(".btn_exclude").addEventListener('click', ()=> {
+                exclude(url, e.id)
+            })
+            model.classList.remove("model");
+            document.querySelector(".list").appendChild(model);
         })
     }).catch(err => {
         console.log(err);
@@ -304,14 +304,14 @@ function load_turma(conf) {
 }
 
 function edit_turma(url, id, curso, alunos) {
-    dado1.value = curso
-    dado2.value = alunos;
+    select_curso.value = curso
+    dado3.value = alunos;
     document.querySelector(".btn_add").innerHTML = "Alterar";
     document.querySelector(".btn_add").onclick = () => {
 
         let obj = {
-            "curso" : dado1.value,
-            "alunos" : dado2.value
+            "curso" : select_curso.value,
+            "alunos" : dado3.value
         }
 
         fetch(url + '/' +id, {
@@ -382,6 +382,7 @@ function load_curso(conf) {
         console.log(res); 
         return res.json();
     }).then(data => {
+        console.log(data);
         data.forEach((e) => {
             let model = document.querySelector(".user").cloneNode(true);
             model.querySelector('.info1').innerHTML = e.curso ;
@@ -410,8 +411,10 @@ function exclude(url, id) {
             load_comp(url);
         }else if(url == url_amb){
             load_amb(url);
-        }else{
+        }else if(url == url_turma){
             load_turma(url);
+        }else{
+            load_curso(url)
         }
         
     }).catch(err => {

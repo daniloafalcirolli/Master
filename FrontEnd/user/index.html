@@ -38,10 +38,13 @@
                     <input type="email" id="user_email">
                     <input type="text" id="tel" maxlength="15">
                 </form>
-                <button type="submit" id="btn" class="btn_save" onclick="update()">Salvar</button>
+                <div class="top_btns">
+                    <button type="submit" id="btn" class="btn_save" onclick="update()">Salvar</button>
+                    <button type="submit" id="btn" class="btn_exit" onclick="sair()">Sair</button>
+                </div>
                 <div class="bottom_btns">
-                    <button type="submit" id="btn" class="btn_exit" onclick="sair()" style="padding: 10px 25px; margin-bottom: 20px">Sair</button>
-                    <button type="submit" id="btn" class="btn_resetPw" onclick="funcionarios()" style="padding: 10px 25px; margin-bottom: 20px">Redefinir Senha</button>
+                    <button type="submit" id="btn" class="btn_agenda" onclick="agenda()">Agenda</button>
+                    <button type="submit" id="btn" class="btn_resetPw" onclick="funcionarios()">Redefinir Senha</button>
                     <button type="submit" id="btn" class="btn_new_user" onclick="register()">Registrar novo Usuario</button>
                 </div>
             </div>
