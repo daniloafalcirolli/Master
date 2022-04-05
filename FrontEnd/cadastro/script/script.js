@@ -58,6 +58,8 @@ function componente() {
 }
 
 function load_comp(conf) {
+    document.querySelector(".btn_add").innerHTML = "Adicionar"
+
     document.querySelectorAll('.user').forEach(e=>{
         if(!e.classList.contains('model')){
             e.remove();
@@ -158,6 +160,8 @@ function ambiente() {
 }
 
 function load_amb(conf) {
+    document.querySelector(".btn_add").innerHTML = "Adicionar"
+
     document.querySelectorAll('.user').forEach(e=>{
         if(!e.classList.contains('model')){
             e.remove();
@@ -272,6 +276,8 @@ function turma() {
 }
 
 function load_turma(conf) {
+    document.querySelector(".btn_add").innerHTML = "Adicionar"
+
     document.querySelectorAll('.user').forEach(e=>{
         if(!e.classList.contains('model')){
             e.remove();
@@ -364,6 +370,7 @@ function curso() {
             console.log(data);
             load_curso(url_curso);
             dado3.value = "";
+            arrayComponente = [];
         }).catch(err => {
             console.log(err);
         })
@@ -371,6 +378,8 @@ function curso() {
 }
 
 function load_curso(conf) {
+    document.querySelector(".btn_add").innerHTML = "Adicionar"
+
     document.querySelectorAll('.user').forEach(e=>{
         if(!e.classList.contains('model')){
             e.remove();
@@ -484,4 +493,8 @@ function buscar() {
             rows[i].style.display = "none";
         }
     }
+}
+
+function backpg() {
+    window.history.back();
 }

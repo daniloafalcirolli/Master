@@ -3,6 +3,7 @@ let url = 'http://localhost:3000/usuario/' + id;
 var btn_new_user = document.querySelector(".btn_new_user");
 var btn_resetPw = document.querySelector(".btn_resetPw");
 var btn_agenda = document.querySelector(".btn_agenda");
+var btn_cadastro = document.querySelector(".btn_cadastro");
 
 getInfo()
 
@@ -27,10 +28,12 @@ function getInfo() {
             btn_new_user.style.display = "block";
             btn_resetPw.style.display = "block";
             btn_agenda.style.display = "block";
+            btn_cadastro.style.display = "block";
         }else{
             btn_new_user.style.display = "none";
             btn_resetPw.style.display = "none";
             btn_agenda.style.display = "none";
+            btn_cadastro.style.display = "none";
         }
     }).catch(err =>[
         console.log(err)
@@ -65,6 +68,10 @@ function update(){
 function sair() {
     localStorage.removeItem("user");
     window.location.href="../login/index.html";
+}
+
+function cadastro() {
+    window.location.href="../cadastro/index.html";
 }
 
 function agenda() {

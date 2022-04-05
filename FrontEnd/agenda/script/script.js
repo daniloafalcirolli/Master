@@ -241,7 +241,7 @@ function calculos(){
         document.body.removeChild(element);
   }
   download()
-};
+}
 
 function limparCampos() {
     select1.value = 0;
@@ -250,7 +250,6 @@ function limparCampos() {
     document.getElementById('dataFinal').value = '';
     document.querySelector(".csv").style.display = "none";
 }
-
 
 function backpg() {
     window.history.back();

@@ -58,6 +58,15 @@ form{
     width: 100%;
 }
 
+.button{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_add{
+    margin-bottom: 20px;
+}
+
 .lista{
     width: 70%;
 }

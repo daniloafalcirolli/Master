@@ -96,14 +96,14 @@ input{
 }
 
 .top_btns button{
-    width: 9vw !important; 
+    width: 9.4vw !important; 
 }
 
 .bottom_btns{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 240px;
+    height: 280px;
 }
 
 .filter{
