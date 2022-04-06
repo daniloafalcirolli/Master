@@ -56,12 +56,13 @@ function update(){
         },
         body: JSON.stringify(obj),
     }).then(res => {
-        console.log(res); 
-        return res.json();
+        if(res.status == 200){
+            alert("Dados alterados com sucesso!");
+        }else{
+            alert("Algo deu errado :(")
+        }
     }).then(data => {
-        console.log(data);
     }).catch(err => {
-        console.log(err);
     })
 }
 

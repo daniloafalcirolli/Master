@@ -63,9 +63,11 @@ function registro() {
                 }).catch(err => {
                     console.log(err);
                 })
-                
+
                 alert("Usuario cadastrado com sucesso!")
-    
+
+                document.querySelector("select").style.color = "red";
+                document.querySelector("select").style.fontWeight = "700";
                 document.querySelector("#reg_nome").value = "";
                 document.querySelector("#reg_cpf").value = "";
                 document.querySelector("#reg_email").value = "";

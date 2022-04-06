@@ -1,5 +1,4 @@
 const agenda = require ('../model/agenda');
-
 const ambiente = require ('../model/ambiente');
 const turma = require ('../model/turma');
 const usuario = require ('../model/usuario');

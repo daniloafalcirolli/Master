@@ -121,10 +121,8 @@ function maskDate(i){
         
     }
     let finalData = new Date(date())
-    console.log(dataIni)
     let finalFinalDate = new Date(finalData.setDate(finalData.getDate()+140))
     
-    console.log(finalFinalDate)
     dataFinal = finalFinalDate.getFullYear() + '-' + ((finalFinalDate.getMonth() +1) <= 9 ? "0"+ (finalFinalDate.getMonth() + 1)  : (finalFinalDate.getMonth() + 1)) + '-' + ((""+finalFinalDate.getDate()).length === 2 ? finalFinalDate.getDate() : "0"+ finalFinalDate.getDate());
     document.querySelector("#dataFinal").value = ((""+finalFinalDate.getDate()).length === 2 ? finalFinalDate.getDate() : "0"+ finalFinalDate.getDate()) + '/' + ((finalFinalDate.getMonth() +1) <= 9 ? "0"+ (finalFinalDate.getMonth() + 1)  : (finalFinalDate.getMonth() + 1)) + '/' + finalFinalDate.getFullYear();
     
@@ -132,7 +130,6 @@ function maskDate(i){
  }
  
 function test(){
-    console.log(document.querySelector("#select1").value, document.querySelector("#select2").value, dataIni, dataFinal, docente);
     document.querySelector(".csv").style.display = "block";
 
     if(document.querySelector("#select1").value == 0 || document.querySelector("#select2").value == 0 || docente == "" || dataIni == "" || dataFinal == ""){
@@ -153,15 +150,13 @@ function test(){
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             getDados(data.id);
         }).catch(err => {
             console.log(err);
         })
-    
+
         alert("Dados cadastrados com sucesso!");
     }
     
@@ -189,6 +184,8 @@ function calculos(){
     let horaAula = 0.75;
     let cargaH = 25;
 
+    csv = "";
+
     componentes.forEach(e=>{
         cargaH = cargaH + parseInt(e.carga_horaria)
         e.aula_semana = (parseInt(e.carga_horaria) / horaAula ) / 20; //20 = semanas no semestre
@@ -197,7 +194,7 @@ function calculos(){
         }
         
     })
-    console.log(teste)
+
     let a = ["7:30","8:15","9:00","9:15","10:00","10:45"];
 
     csv_linha = ';SEG;TER;QUA;QUI;SEX;\r\n'
@@ -208,7 +205,6 @@ function calculos(){
             csv_linha += "INTERVALO;INTERVALO;INTERVALO;INTERVALO;INTERVALO;"
         }else{
             if(i==5){
-                console.log(i)
                 for(let j = (i-1); j < teste.length; j+=5){
                     csv_linha += teste[j] + ';';
                 }
@@ -230,7 +226,8 @@ function calculos(){
     csv += csv_linha + '\r\n';
     csv_linha = "";
 
-    console.log(csv)
+    componentes.splice(0, componentes.length);
+    teste.splice(0, teste.length);
 
     function download() {
         var element = document.createElement('a');

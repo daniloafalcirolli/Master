@@ -23,7 +23,7 @@ class ambiente extends Model{
     }
     static associate(models) {
         ambiente.belongsTo(models.tipoAmbiente, {foreignKey: 'id_tipo'});
-        ambiente.hasMany(models.agenda, {foreignKey: 'id'});
+        ambiente.hasMany(models.agenda, {foreignKey: 'id_ambiente'});
     }
 };
 module.exports = ambiente;

@@ -35,7 +35,6 @@ function componente() {
             "materia" : dado1.value,
             "carga_horaria" : dado2.value
         }
-        console.log(obj)
 
         fetch(url_comp, {
             method: "POST",
@@ -44,10 +43,8 @@ function componente() {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             load_comp(url_comp);
             dado1.value = "";
             dado2.value = "";
@@ -68,10 +65,8 @@ function load_comp(conf) {
 
     let url = conf;
     fetch(url).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
-        console.log(data)
         data.forEach((e) => {
             let model = document.querySelector(".user").cloneNode(true);
             model.querySelector('.info1').innerHTML = e.materia;
@@ -108,10 +103,8 @@ function edit_comp(url, id, materia, carga_horaria) {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             document.querySelector(".btn_add").innerHTML = "Adicionar"
             componente();
         }).catch(err => {
@@ -144,10 +137,8 @@ function ambiente() {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             load_amb(url_amb);
             select.value = "0";
             select.style.color = "red";
@@ -170,7 +161,6 @@ function load_amb(conf) {
 
     let url = conf;
     fetch(url).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
         data.forEach((e) => {
@@ -209,10 +199,8 @@ function edit_amb(url, id, capacidade, tipoAmbiente) {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             select.value = 0
             document.querySelector(".btn_add").innerHTML = "Adicionar"
             ambiente();
@@ -263,11 +251,10 @@ function turma() {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             load_turma(url_turma);
+            select_curso.value = 0;
             dado3.value = "";
         }).catch(err => {
             console.log(err);
@@ -287,11 +274,9 @@ function load_turma(conf) {
     let url = conf;
 
     fetch(url).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
         data.forEach((e) => {
-            console.log(data)
             let model = document.querySelector(".user").cloneNode(true);
             model.querySelector('.info1').innerHTML = e.curso.curso;
             model.querySelector('.info2').innerHTML = e.alunos;
@@ -327,11 +312,11 @@ function edit_turma(url, id, curso, alunos) {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             document.querySelector(".btn_add").innerHTML = "Adicionar"
+            select_curso.value = 0;
+            dado3.value = "";
             turma();
         }).catch(err => {
             console.log(err);
@@ -356,7 +341,6 @@ function curso() {
             "curso" : dado3.value,
             "id_componente" : arrayComponente
         }
-        console.log(obj);
         fetch(url_curso, {
             method: "POST",
             headers: {
@@ -364,10 +348,8 @@ function curso() {
             },
             body: JSON.stringify(obj),
         }).then(res => {
-            console.log(res); 
             return res.json();
         }).then(data => {
-            console.log(data);
             load_curso(url_curso);
             dado3.value = "";
             arrayComponente = [];
@@ -388,10 +370,8 @@ function load_curso(conf) {
 
     let url = conf;
     fetch(url).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
-        console.log(data);
         data.forEach((e) => {
             let model = document.querySelector(".user").cloneNode(true);
             model.querySelector('.info1').innerHTML = e.curso ;
@@ -412,10 +392,8 @@ function exclude(url, id) {
     fetch(url + '/' +id, {
         method: "DELETE"
     }).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
-        console.log(data);
         if(url == url_comp){
             load_comp(url);
         }else if(url == url_amb){
@@ -432,7 +410,6 @@ function exclude(url, id) {
 }
 
 function openModal() {
-    console.log(arrayComponente)
     document.querySelector(".modal").classList.remove("model");
     
     document.querySelectorAll('.check').forEach(e=>{
@@ -442,12 +419,9 @@ function openModal() {
     });
     
     fetch(url_comp).then(res => {
-        console.log(res); 
         return res.json();
     }).then(data => {
-        console.log(data)
         data.forEach((e) => {
-            console.log(e)
             let check = document.querySelector(".check").cloneNode(true);
             if(arrayComponente.includes(e.id+'')) check.querySelector("input[type=checkbox]").checked = true
             check.querySelector("input[type=checkbox]").value = e.id;
@@ -455,7 +429,6 @@ function openModal() {
             check.classList.remove("model");
             check.addEventListener("change", (e) => {
                 if(check.querySelector("input[type=checkbox]").checked){
-                    console.log(check.querySelector("input[type=checkbox]").value)
                     arrayComponente.push(check.querySelector("input[type=checkbox]").value)
                 }else{
                     arrayComponente.forEach((e,index)=>{
