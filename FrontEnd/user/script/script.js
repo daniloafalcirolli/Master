@@ -24,7 +24,7 @@ function getInfo() {
         fields.querySelector("#user_email").value = data[0].email
         fields.querySelector("#tel").value = data[0].telefone
 
-        if(data[0].cargo == "Coordenador de Atividades Técnicas" || data[0].cargo == "Diretor de Unidade de Formação Profissional" || data[0].cargo == "Orientador de Prática Profissional"){
+        if(data[0].cargo == "Admin" || data[0].cargo == "Coordenador de Atividades Técnicas" || data[0].cargo == "Diretor de Unidade de Formação Profissional" || data[0].cargo == "Orientador de Prática Profissional"){
             btn_new_user.style.display = "block";
             btn_resetPw.style.display = "block";
             btn_agenda.style.display = "block";
